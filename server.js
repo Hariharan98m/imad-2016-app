@@ -7,7 +7,7 @@ app.use(morgan('combined'));
 
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'hari.jpg'));
+  res.sendFile(path.join(__dirname, 'ui', 'hari.html'));
 });
 
 app.get('/ui/style.css', function (req, res) {
