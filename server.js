@@ -92,8 +92,12 @@ app.get('/:articleName',function(req,res){
     res.send(f(articles[articleName]));
 });
 
-var counter=0;
+var i=true;
 app.get('/counter',function(req, res){
+   if (i){
+       counter=0;
+   }
+   counter=counter+1;
    res.send(counter.toString());
 });
 
