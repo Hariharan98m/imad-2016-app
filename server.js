@@ -92,15 +92,6 @@ app.get('/:articleName',function(req,res){
     res.send(f(articles[articleName]));
 });
 
-var i=true;
-app.get('/counter',function(req, res){
-   if (i){
-       counter=0;
-   }
-   counter=counter+1;
-   res.send(counter.toString());
-});
-
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
