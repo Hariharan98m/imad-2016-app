@@ -6,6 +6,66 @@ var app = express();
 app.use(morgan('combined'));
 
 
+var articleOne={
+  title :'Article 1 Hari',
+  heading :'Article One',
+  date :'Oct 10,2016',
+  content:`<p>
+            This is my first article.This is my first article.This is my first article.This is my first article.
+            This is my first article.This is my first article.This is my first article.
+            This is my first article.This is my first article.This is my first article.
+        </p>
+        
+        <p>
+            This is my first article.This is my first article.This is my first article.This is my first article.
+            This is my first article.This is my first article.This is my first article.
+            This is my first article.This is my first article.This is my first article.
+        </p>
+        
+        <p>
+            This is my first article.This is my first article.This is my first article.This is my first article.
+            This is my first article.This is my first article.This is my first article.
+            This is my first article.This is my first article.This is my first article.
+        </p>`
+  
+  
+};
+function f(data){
+    var title=data.title;
+    var heading=data.heading;
+    var date=data.date;
+    var content=data.content;
+    
+ var htmltemplate=`
+ <html>
+    <head>
+        <title>
+            ${title}
+        </title>
+    <link href="/ui/style.css" rel="stylesheet" />
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    </head>
+    <body>
+        <div class=container>
+        <div>
+            <a href='/'>Home</a>
+        </div>
+        <hr/>
+        <h1>
+            ${heading}
+        </h1>
+        <div>
+            ${date}
+        </div>
+            ${content}
+        </div>
+    </body>
+</html>`
+return htmltemplate;
+
+
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -15,7 +75,7 @@ app.get('/ui/style.css', function (req, res) {
 });
 
 app.get('/article-one',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'a1.html'));
+    res.send(f(articleOne));
 });
 
 app.get('/article-two',function(req,res){
