@@ -42,9 +42,6 @@ var articles={
   date :'Oct 12,2016',
   content:`This is my third article.`
 }
-
-
-
 };
 function f(data){
     var title=data.title;
@@ -76,7 +73,7 @@ function f(data){
             ${content}
         </div>
     </body>
-</html>`
+</html>`;
 return htmltemplate;
 
 
@@ -101,6 +98,8 @@ app.get('/article-two',function(req,res){
 
 app.get('/article-three',function(req,res){
     res.send(f(articleThree));
+
+    
 });
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
