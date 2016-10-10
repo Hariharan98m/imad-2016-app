@@ -5,8 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-
-var articleOne={
+var articles={
+    articleOne:{
   title :'Article 1 Hari',
   heading :'Article One',
   date :'Oct 10,2016',
@@ -29,6 +29,22 @@ var articleOne={
         </p>`
   
   
+},
+    articleTwo:{
+  title :'Article 2 Hari',
+  heading :'Article Two',
+  date :'Oct 11,2016',
+  content:`This is my second article.`
+},
+    articleThree:{
+  title :'Article 3 Hari',
+  heading :'Article Three',
+  date :'Oct 12,2016',
+  content:`This is my third article.`
+}
+
+
+
 };
 function f(data){
     var title=data.title;
@@ -79,11 +95,12 @@ app.get('/article-one',function(req,res){
 });
 
 app.get('/article-two',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'a2.html'));
+    res.send(f(articleTwo));
 });
 
+
 app.get('/article-three',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'a3.html'));
+    res.send(f(articleThree));
 });
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
