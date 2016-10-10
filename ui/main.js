@@ -3,5 +3,5 @@ var element=document.getElementById('main-text');
 element.innerHTML='New Value';
 var img=document.getElementById('image');
 img.onclick=function(){
-    img.syle.marginLeft='100px';
+    img.style.marginLeft='100px';
 };
