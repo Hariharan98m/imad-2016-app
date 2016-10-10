@@ -91,10 +91,15 @@ app.get('/:articleName',function(req,res){
     var articleName=req.params.articleName;
     res.send(f(articles[articleName]));
 });
-
+var counter=0
+app.get('/counter',function(req,res){
+   counter=counter+1;
+   res.send(counter.toString());
+});
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
+
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
@@ -104,3 +109,4 @@ var port = 8080; // Use 8080 for local development because you might already hav
 app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
+
