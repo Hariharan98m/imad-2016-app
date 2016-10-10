@@ -88,16 +88,16 @@ app.get('/ui/style.css', function (req, res) {
 });
 
 app.get('/article-one',function(req,res){
-    res.send(f(articleOne));
+    res.send(f(articles.articleOne));
 });
 
 app.get('/article-two',function(req,res){
-    res.send(f(articleTwo));
+    res.send(f(articles.articleTwo));
 });
 
 
 app.get('/article-three',function(req,res){
-    res.send(f(articleThree));
+    res.send(f(articles.articleThree));
 
     
 });
