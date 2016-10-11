@@ -32,8 +32,6 @@ request.send(null);
 };*/
 
 //Submit name
-var nameInput= document.getElementById('name');
-var name=nameInput.value;
 var submit=document.getElementById('submitbtn');
 submit.onclick=function(){
     
@@ -62,6 +60,9 @@ submit.onclick=function(){
 
 
 //Make the request
+
+var nameInput= document.getElementById('name');
+var name=nameInput.value;
 request.open('GET','http://hariharan98m.imad.hasura-app.io/submitbtn?name='+name, true);
 request.send(null);
 }; 
