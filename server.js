@@ -101,9 +101,12 @@ app.get('/ui/main.js', function (req, res) {
 });
 
 var counter=0;
+function ct(counter){
+    counter++;
+    return `${counter}`;
+}
 app.get('/counter', function (req, res) {
-    counter=counter+1;
-    res.send(`${counter}`);
+    res.send(ct(counter));
 });
 
 
