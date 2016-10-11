@@ -66,5 +66,8 @@ var name=nameInput.value;
 request.open('GET','http://hariharan98m.imad.hasura-app.io/submitbtn?name='+name, true);
 request.send(null);
 }; 
+
+
+
   
 
