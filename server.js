@@ -101,12 +101,9 @@ app.get('/ui/main.js', function (req, res) {
 });
 
 var counter=0;
-function ct(counter){
-    counter++;
-    h=`this is  my counter${counter}`;
-}
 app.get('/counter', function (req, res) {
-    res.send(ct(counter));
+    counter=counter+1;
+    res.send(counter.toString());
 });
 
 
