@@ -96,7 +96,7 @@ app.get('/counter', function (req, res) {
 
 
 var names=[];
-app.get('/submitbtn/:name', function (req, res) {
+app.get('/submitbtn', function (req, res) {
   var name=req.query.name;
   names.push(name);
   //JSON
