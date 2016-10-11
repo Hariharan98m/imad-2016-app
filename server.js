@@ -103,7 +103,7 @@ app.get('/ui/main.js', function (req, res) {
 var counter=0;
 function ct(counter){
     counter++;
-    return `${counter}`;
+    h=`this is  my counter${counter}`;
 }
 app.get('/counter', function (req, res) {
     res.send(ct(counter));
