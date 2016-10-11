@@ -9,6 +9,9 @@ var button=document.getElementById('counter');
           //Take some action
           if(request.status==200){
               var counter=request.responseText;
+              
+  var span=document.getElementById('count');
+  span.innerHTML=counter;
           }
       }  
       //Not done yet
@@ -16,7 +19,7 @@ var button=document.getElementById('counter');
 
 
 //Make the request
-request.open('GET','http://hariharan98m.imad.hasura-app.io', true);
+request.open('GET','http://hariharan98m.imad.hasura-app.io/counter', true);
 request.send(null);
 //Render the variable in correct form
 /*button.onclick=function(){
