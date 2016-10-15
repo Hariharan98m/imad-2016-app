@@ -80,7 +80,7 @@ return htmltemplate;
 }
 
 app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+  res.send('hai');
 });
 
 app.get('/ui/style.css', function (req, res) {
