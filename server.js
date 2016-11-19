@@ -104,12 +104,24 @@ app.get('/submitbtn', function (req, res) {
   res.send(JSON.stringify(names));
 });
 
-/*
+
 app.get('/:articleName',function(req,res){
-    var articleName=req.params.articleName;
-    res.send(f(articles[articleName]));
+    pool.query('SELECT * from articles where title='+req.params.articleName,function(err,result){
+    if(err){
+        res.status(500).send(err.toString());
+    }
+    else if(result.rows.length===0){
+        res.status(404).send('Article not found');
+    }
+    else
+        {
+            var articleData=result;
+            res.send(createTemplate(articleData));
+        }
+    });
+    
 });
-*/
+
 
 var Pool=require('pg').Pool;
 var config={
