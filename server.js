@@ -105,10 +105,10 @@ app.get('/submitbtn', function (req, res) {
 });
 
 
-app.get('/:articleName',function(req,res){
+app.get('/articles/:articleName',function(req,res){
     res.send(req.params.articleName);
-    /*
-    pool.query("SELECT * from articles where title=" +req.params.articleName+,function(err,result){
+    //'article-one'
+    pool.query("SELECT * from articles where title='"+req.params.articleName+"'",function(err,result){
     if(err){
         res.status(500).send(err.toString());
     }
@@ -117,11 +117,10 @@ app.get('/:articleName',function(req,res){
     }
     else
         {
-            var articleData=result;
+            var articleData=result.rows[0];
             res.send(createTemplate(articleData));
         }
     });
-    */
 });
 
 
