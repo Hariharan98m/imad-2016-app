@@ -118,7 +118,7 @@ app.get('/:articleName',function(req,res){
     else
         {
             var articleData=result.rows[0];
-            res.send(articleData);
+            res.send(f(articleData));
         }
     });
 });
