@@ -49,6 +49,7 @@ function f(data){
     var date=data.date;
     var content=data.content;
     
+    
  var htmltemplate=`
  <html>
     <head>
@@ -109,6 +110,32 @@ app.get('/:articleName',function(req,res){
     res.send(f(articles[articleName]));
 });
 */
+
+var Pool=require('pg').Pool;
+var config={
+   user:'hariharan98m',
+   database:'hariharan98m',
+   host:'http://db.imad.hasura-app.io/',
+   port:'5432',
+   password:process.env.DB_PASSWORD
+   
+};
+var pool=new Pool(config);
+app.get('/test-db',function(req,res){
+    //make a request
+    pool.query('SELECT * from test',function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else
+        {
+            res.send(JSON.stringify(result));
+        }
+    });
+    //respond with data
+    
+    
+});
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
