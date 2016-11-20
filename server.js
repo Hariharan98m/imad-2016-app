@@ -116,6 +116,33 @@ app.get('/submitbtn', function (req, res) {
 });
 
 
+app.get('/test-db',function(req,res){
+    //make a request
+    pool.query('SELECT * from test',function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else
+        {
+            res.send(JSON.stringify(result.rows));
+        }
+    });
+    //respond with data
+    
+    
+});
+
+
+app.get('/ui/madi.png', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
+});
+
+app.get('/ui/main.js', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'main.js'));
+});
+
+
+
 app.get('/:articleName',function(req,res){
     res.send(req.params.articleName);
     //'article-one'
@@ -134,30 +161,6 @@ app.get('/:articleName',function(req,res){
     });
 });
 
-
-
-app.get('/test-db',function(req,res){
-    //make a request
-    pool.query('SELECT * from test',function(err,result){
-        if(err){
-            res.status(500).send(err.toString());
-        }
-        else
-        {
-            res.send(JSON.stringify(result.rows));
-        }
-    });
-    //respond with data
-    
-    
-});
-app.get('/ui/madi.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
-});
-
-app.get('/ui/main.js', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'main.js'));
-});
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
