@@ -10,7 +10,12 @@ h3 {
 .center {
     text-align: center;
 }
-
+.left{
+    float:left;
+}
+.right{
+    float:right;
+}
 .text-big {
     font-size: 300%;
 }
