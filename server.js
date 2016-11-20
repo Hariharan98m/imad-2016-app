@@ -5,6 +5,17 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var Pool=require('pg').Pool;
+var config={
+   user:'hariharan98m',
+   database:'hariharan98m',
+   host:'db.imad.hasura-app.io',
+   port:'5432',
+   password:process.env.DB_PASSWORD
+   
+};
+var pool=new Pool(config);
+
 var articles={
     articleOne:{
   title :'Article 1 Hari',
@@ -124,16 +135,7 @@ app.get('/:articleName',function(req,res){
 });
 
 
-var Pool=require('pg').Pool;
-var config={
-   user:'hariharan98m',
-   database:'hariharan98m',
-   host:'db.imad.hasura-app.io',
-   port:'5432',
-   password:process.env.DB_PASSWORD
-   
-};
-var pool=new Pool(config);
+
 app.get('/test-db',function(req,res){
     //make a request
     pool.query('SELECT * from test',function(err,result){
