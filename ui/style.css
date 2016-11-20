@@ -4,6 +4,9 @@ body {
     margin-top: 75px;
 }
 
+h3 {
+ color:#03A9F4;   
+}
 .center {
     text-align: center;
 }
@@ -16,22 +19,19 @@ body {
     font-weight: bold;
 }
 
-.img-medium {
-    height: 50px;
-    width: 100px;
-}
 
 .c1{
     font-family: calibri;
-    font-size: 30%;
+    font-size: 100%;
     color: pink;
 }
 .container {
-                    max-width: 800px;
-                    margin:0 auto;
-                    color: green;
-                    font-family: calibri;
-                    padding-top: 60px;
-                    padding-right: 20px;
-                    padding-left: 10px;
+    max-width: 500px;
+    margin-left: 100px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    margin-right: 200px;
+    border-style: solid;
 }
