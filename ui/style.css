@@ -1,6 +1,6 @@
 body {
-    font-family: sans-serif;
-    background-color: lightgrey;
+    font-family: calibri;
+    background-color: white;
     margin-top: 75px;
 }
 
@@ -17,9 +17,19 @@ body {
 }
 
 .img-medium {
-    height: 200px;
+    height: 50px;
+    width: 100px;
 }
-
+.welcome{
+    font-family: calibri;
+    font-size: 30%;
+    color: orange;
+}
+.c1{
+    font-family: calibri;
+    font-size: 300%;
+    color: pink;
+}
 .container {
                     max-width: 800px;
                     margin:0 auto;
