@@ -92,8 +92,8 @@ return htmltemplate;
 }
 
 function temp(data){
-    list='<ul>';
-    for (var i=0;i<=data.length;i++){
+    var list='<ul>';
+    for (var i=0;i<data.length;i++){
         var title=data[i].title;
         list+='<li><a href=/'+title+'>'+title+'</a></li>';
     }
@@ -106,16 +106,16 @@ function temp(data){
     </head>
     <body>
         <div class=container>
-        <div>
-            <a href='/'>Home</a>
-        </div>
-        <hr/>
-        <h3>
-            MY ARTICLES
-        </h3>
-        <div>
-            ${list}
-        </div>
+            <div>
+                <a href='/'>Home</a>
+            </div>
+            <hr/>
+            <h3>
+                MY ARTICLES
+            </h3>
+            <div>
+                ${list}
+            </div>
         </div>
     </body>
 </html>`;
@@ -206,26 +206,30 @@ app.get('/ui/articles.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'articles.html'));
 });
 
+var list=[];
 app.get('/articles', function (req, res) {
     
     pool.query("SELECT title from articles",function(err,result){
     if(err){
         res.status(500).send(err.toString());
     }
-    else if(result.rows.length===0){
+    else{
+        
+    if(result.rows.length===0){
         res.status(404).send('No articles penned by the author');
     }
     else
         {
             var articleData=result.rows;
             var list='<ul>';
-    for (var i=0;i<=articleData.length;i++){
-        var title1=articleData[i].title;
-        list=list+'<li><a href=/'+title1+'>'+title1+'</a></li>';
-    }
-    list+='</ul>';
+            for (var i=0;i<articleData.length;i++){
+            var title=articleData[i].title;
+            list=list+'<li><a href=/'+title+'>'+title+'</a></li>';
+            }
+            list+='</ul>';
             res.send(list);
         }
+    }
     });
 });
 
