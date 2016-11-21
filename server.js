@@ -95,10 +95,11 @@ function temp(data){
     list='<ul>';
     for (var i=0;i<=data.length;i++){
         var title=data[i].title;
-        list+='<li>'+title+'</li>';
+        list+='<li><a href=/'+title+'>'+title+'</a></li>';
     }
     list+='</ul>';
     return list;
+/*    
     var htmltemplate=`
  <html>
     <head>
@@ -120,7 +121,7 @@ function temp(data){
         </div>
     </body>
 </html>`;
-return htmltemplate;
+return htmltemplate;*/
 }
 
 app.get('/', function (req, res) {
