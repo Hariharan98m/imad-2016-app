@@ -98,6 +98,7 @@ function temp(data){
         list+='<li><a href=/'+title+'>'+title+'</a></li>';
     }
     list+='</ul>';
+    return list;
     var htmltemplate=`
  <html>
     <head>
@@ -237,7 +238,7 @@ app.get('/:articleName',function(req,res){
     else
         {
             var articleData=result.rows;
-            res.send(f(articleData));
+            res.send(JSON.stringify(f(articleData)));
         }
     });
 });
