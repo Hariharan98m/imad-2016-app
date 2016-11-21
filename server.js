@@ -219,7 +219,7 @@ app.get('/articles', function (req, res) {
     else
         {
             var articleData=result.rows;
-            res.send((temp(articleData)));
+            res.send(JSON.stringify(temp(articleData)));
         }
     });
 });
