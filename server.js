@@ -218,7 +218,7 @@ app.get('/articles', function (req, res) {
     else
         {
             var articleData=result.rows;
-            res.send(JSON.stringify(articleData[0]));
+            res.send(JSON.stringify(articleData[0].title));
         }
     });
 });
