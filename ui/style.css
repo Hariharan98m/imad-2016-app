@@ -12,7 +12,9 @@ h1{
     color: #de9426;
 }
 .center {
-    padding-left:625px;
+    text-align: center;
+    padding-left: 625px;
+    padding-top: 100px;
 }
 .left{
     float:left;
@@ -57,4 +59,7 @@ h1{
 .logo{
     font-size:200%;
     color: #de9426;
+}
+.welcome {
+    text-align: center;
 }
