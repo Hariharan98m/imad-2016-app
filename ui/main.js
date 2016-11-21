@@ -4,6 +4,7 @@ submit.onclick=function(){
     
     //Make a request to the server and send the name
     
+    
     var request=new XMLHttpRequest();
     
     //Capture the response and store it in a variable
