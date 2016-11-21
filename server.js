@@ -71,7 +71,6 @@ function f(data){
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     </head>
     <body>
-        <div class=container>
         <div class=special>
             <div>
                 <a href='/'>Home</a>
@@ -84,7 +83,6 @@ function f(data){
                 ${date}
             </div>
                 ${content}
-        </div>
         </div>
     </body>
 </html>`;
