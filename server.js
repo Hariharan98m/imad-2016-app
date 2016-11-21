@@ -111,6 +111,8 @@ var names=[];
 app.get('/submitbtn', function (req, res) {
   var name=req.query.name;
   var password=req.query.password;
+  res.send(''+name+''+password);
+  
   pool.query("SELECT * from 'users' where name=$1 and password=$2",[name],[password],function(err,result){
     if(err){
         res.status(500).send('Invalid username/password');
@@ -128,7 +130,7 @@ app.get('/submitbtn', function (req, res) {
 
 app.get('/test-db',function(req,res){
     //make a request
-    pool.query('SELECT * from test',function(err,result){
+    pool.query('SELECT * from users where',function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }
