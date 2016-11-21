@@ -133,8 +133,8 @@ app.get('/test-db',function(req,res){
 });
 
 
-app.get('/ui/madi.png', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
+app.get('/ui/ologo.PNG', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'ologo.PNG'));
 });
 
 app.get('/ui/main.js', function (req, res) {
