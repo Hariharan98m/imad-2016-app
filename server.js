@@ -98,6 +98,7 @@ function temp(data){
         list+='<li>'+title+'</li>';
     }
     list+='</ul>';
+    return list;
     var htmltemplate=`
  <html>
     <head>
