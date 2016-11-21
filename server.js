@@ -105,7 +105,7 @@ function temp(data){
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     </head>
     <body>
-        <div class=container>
+        <div class=special>
             <div>
                 <a href='/'>Home</a>
             </div>
@@ -240,8 +240,8 @@ app.get('/:articleName',function(req,res){
     }
     else
         {
-            var articleData=result.rows;
-            res.send(JSON.stringify(f(articleData)));
+            var articleData=result.rows[0];
+            res.send(f(articleData));
         }
     });
 });
