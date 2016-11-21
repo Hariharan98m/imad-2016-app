@@ -131,13 +131,13 @@ app.get('/submitbtn', function (req, res) {
 app.get('/test-db',function(req,res){
     //make a request
     var name='hari';
-    pool.query('SELECT password from users where name= $1',[name],function(err,result){
+    pool.query("SELECT * from users where name='"+name+"' and password='"+name+"'",function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }
         else
         {
-            res.send(result.rows[0][1]);
+            res.send('Success');
         }
     });
     //respond with data
