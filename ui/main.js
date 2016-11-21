@@ -3,8 +3,6 @@ var submit=document.getElementById('submitbtn');
 submit.onclick=function(){
     
     //Make a request to the server and send the name
-    
-    
     var request=new XMLHttpRequest();
     
     //Capture the response and store it in a variable
@@ -14,7 +12,7 @@ submit.onclick=function(){
           if(request.status==200){
               //Capture the response and save it
               var reply=request.responseText;
-              var message=document.getElementById('namelist');
+              var message=document.getElementById('message');
               message.innerHTML=reply;
           }
       }  
@@ -25,7 +23,7 @@ submit.onclick=function(){
 var nameInput= document.getElementById('name');
 var name=nameInput.value;
 var PasswordInput=document.getElementById('pw');
-var pswd=PasswordInput;
+var pswd=PasswordInput.value;
 request.open('GET','http://hariharan98m.imad.hasura-app.io/submitbtn?name='+name+'&password='+pswd, true);
 request.send(null);
 }; 
