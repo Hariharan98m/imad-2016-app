@@ -12,11 +12,13 @@ submit.onclick=function(){
           if(request.status==200){
               //Capture the response and save it
               var reply=request.responseText;
-              var message=document.getElementById('message');
-              message.innerHTML=reply;
+              var cont=document.getElementById('continue');
               if(reply=='Successful check for credentials'){
                   cont.innerHTML='Continue';
               }
+              var message=document.getElementById('message');
+              message.innerHTML=reply;
+              
           }
       }  
       //Not done yet
