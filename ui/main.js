@@ -62,6 +62,7 @@ request.open('GET','http://hariharan98m.imad.hasura-app.io/counter', true);
 request.send(null);
 };
 
+*/
 //Render the variable in correct form
 //button.onclick=function(){
   //counter+=1;
@@ -71,12 +72,12 @@ request.send(null);
 //};
 
 //Submit name
-var submit=document.getElementById('submitbtn');
+var submit=document.getElementById('subbtn');
 submit.onclick=function(){
     
     //Make a request to the server and send the name
     
-     var request=new XMLHttpRequest();
+    var request=new XMLHttpRequest();
     
     //Capture the response and store it in a variable
     request.onreadystatechange=function(){
@@ -84,14 +85,16 @@ submit.onclick=function(){
           //Take some action
           if(request.status==200){
               //Capture a list of names and render it as a list
-              var names=request.responseText;
-              names=JSON.parse(names);
-              var list='';
-              for(var i=0;i<names.length;i++){
-                  list+='<li>'+names[i]+'</li>';
+              var re=document.getElementById('refresh');
+              var reply=request.responseText;
+              if(reply=='Successfully commented'){
+                  re.innerHTML='Refresh the page to see your comment';
               }
-              var ul=document.getElementById('namelist');
-              ul.innerHTML=list;
+              else{
+                  re.innerHTML='Try Again';
+              }
+              var com=document.getElementById('sc');
+              com.innerHTML=reply;
           }
       }  
       //Not done yet
@@ -100,13 +103,13 @@ submit.onclick=function(){
 
 //Make the request
 
-var nameInput= document.getElementById('name');
-var name=nameInput.value;
-request.open('GET','http://hariharan98m.imad.hasura-app.io/submitbtn?name='+name, true);
+var comments= document.getElementById('cts');
+comments=comments.value;
+request.open('GET','http://hariharan98m.imad.hasura-app.io/subbtn?comments='+comments, true);
 request.send(null);
 }; 
 
 
-*/
+
   
 
