@@ -113,11 +113,15 @@ app.get('/submitbtn', function (req, res) {
   var password=req.query.password;
   pool.query("SELECT * from users where name='"+name+"' and password='"+name+"'",function(err,result){
         if(err){
-            res.status(500).send('Invalid username/password');
+            res.status(500).send(JSON.stringify(err));
         }
         else
-        {
+        {   if(result.rows.length===0){
+            res.send('Invalid username/password');
+            }
+            else{
             res.send('Successful check for credentials');
+            }
         }
     });
     //respond with data
