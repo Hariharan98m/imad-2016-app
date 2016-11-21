@@ -68,3 +68,8 @@ h1{
 .welcome {
     text-align: center;
 }
+.header{
+    max-width:200px;
+    text-align:center;
+    margin:0 auto;
+}
