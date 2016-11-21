@@ -28,7 +28,11 @@ request.open('GET','http://hariharan98m.imad.hasura-app.io/submitbtn?name='+name
 request.send(null);
 }; 
 
-
+var stat=document.getElementById('message');
+var cont=document.getElementById('continue');
+if (stat.value=='Successful check for credentials'){
+    cont.innerHTML='Continue';
+}
 /*
 var button=document.getElementById('counter');
 button.onclick=function(){
