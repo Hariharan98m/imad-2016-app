@@ -50,6 +50,12 @@ h1{
 .dev2{
     width:400px;
     height:350px;
+    
+  -webkit-transform:rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  transform: rotate(270deg);
 }
 .c1{
     font-size: 100%;
