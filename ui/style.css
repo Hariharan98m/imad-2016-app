@@ -53,7 +53,7 @@ h1{
 }
 .container {
     float: left;
-    min-width: 500px;
+    max-width: 500px;
     padding-top: 10px;
     padding-right: 20px;
     padding-left: 10px;
@@ -72,4 +72,7 @@ h1{
     max-width:200px;
     text-align:center;
     margin:0 auto;
+}
+.special{
+    width:500px;
 }
