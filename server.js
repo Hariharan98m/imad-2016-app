@@ -110,9 +110,19 @@ app.get('/counter', function (req, res) {
 var names=[];
 app.get('/submitbtn', function (req, res) {
   var name=req.query.name;
-  names.push(name);
-  //JSON
-  res.send(JSON.stringify(names));
+  var password=req.query.password;
+  pool.query("SELECT * from 'users' where user=$1 and password=$2",[name],[password],function(err,result){
+    if(err){
+        res.status(500).send('Invalid username/password');
+    }
+    else if(result.rows.length===0){
+        res.status(404).send('Invalid username/password');
+    }
+    else
+        {
+            res.send('Successful check for credentials');
+        }
+    });
 });
 
 
