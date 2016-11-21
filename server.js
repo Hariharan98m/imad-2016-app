@@ -98,8 +98,6 @@ function temp(data){
         list+='<li><a href=/'+title+'>'+title+'</a></li>';
     }
     list+='</ul>';
-    return list;
-/*    
     var htmltemplate=`
  <html>
     <head>
@@ -121,7 +119,7 @@ function temp(data){
         </div>
     </body>
 </html>`;
-return htmltemplate;*/
+return htmltemplate;
 }
 
 app.get('/', function (req, res) {
@@ -220,7 +218,7 @@ app.get('/articles', function (req, res) {
     else
         {
             var articleData=result.rows;
-            res.send(JSON.parse(temp(articleData)));
+            res.send((temp(articleData)));
         }
     });
 });
@@ -239,7 +237,7 @@ app.get('/:articleName',function(req,res){
     else
         {
             var articleData=result.rows;
-            res.send(temp(articleData));
+            res.send(f(articleData));
         }
     });
 });
