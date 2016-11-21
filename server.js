@@ -120,7 +120,7 @@ app.get('/submitbtn', function (req, res) {
             res.send('Invalid username/password. Try Again');
             }
             else{
-            res.send('Successful check for credentials');
+            res.send(result.rows);
             }
         }
     });
