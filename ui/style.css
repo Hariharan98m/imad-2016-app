@@ -39,22 +39,12 @@ h1{
 }
 .dev{
     width:400px;
-    height:350px;
-    
-  -webkit-transform:rotate(180deg);
-  -moz-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
+    height:300px;
   transform: rotate(180deg);
 }
 .dev2{
     width:400px;
-    height:350px;
-    
-  -webkit-transform:rotate(270deg);
-  -moz-transform: rotate(270deg);
-  -ms-transform: rotate(270deg);
-  -o-transform: rotate(270deg);
+    height:auto;
   transform: rotate(270deg);
 }
 .c1{
