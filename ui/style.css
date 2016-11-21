@@ -44,6 +44,7 @@ h1{
     color: pink;
 }
 .container {
+    float:right;
     max-width: 500px;
     margin-left: 100px;
     padding-top: 10px;
