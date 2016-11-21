@@ -72,17 +72,19 @@ function f(data){
     </head>
     <body>
         <div class=container>
-        <div>
-            <a href='/'>Home</a>
+        <div class=special>
+            <div>
+                <a href='/'>Home</a>
+            </div>
+            <hr/>
+            <h1>
+                ${heading}
+            </h1>
+            <div>
+                ${date}
+            </div>
+                ${content}
         </div>
-        <hr/>
-        <h1>
-            ${heading}
-        </h1>
-        <div>
-            ${date}
-        </div>
-            ${content}
         </div>
     </body>
 </html>`;
