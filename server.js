@@ -237,7 +237,7 @@ app.get('/:articleName',function(req,res){
     else
         {
             var articleData=result.rows;
-            res.send(JSON.stringify(articleData));
+            res.send(JSON.parse(temp(articleData)));
         }
     });
 });
