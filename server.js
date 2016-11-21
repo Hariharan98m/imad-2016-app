@@ -221,7 +221,7 @@ app.get('/articles', function (req, res) {
     else
         {
             var articleData=result.rows;
-            res.send(f(articleData));
+            res.send(temp(articleData));
         }
     }
     });
