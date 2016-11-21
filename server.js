@@ -131,7 +131,7 @@ app.get('/submitbtn', function (req, res) {
 app.get('/test-db',function(req,res){
     //make a request
     var name='hari';
-    pool.query('SELECT * from users where name=$1',[name],function(err,result){
+    pool.query('SELECT password from users where name= $1',[name],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }
