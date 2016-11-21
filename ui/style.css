@@ -12,7 +12,7 @@ h1{
     color: #de9426;
 }
 .center {
-    padding-left:600px;
+    padding-left:625px;
 }
 .left{
     float:left;
@@ -36,8 +36,8 @@ h1{
     height:150px;
 }
 .dev{
-    width:200px;
-    height:200px;
+    width:400px;
+    height:350px;
 }
 .c1{
     font-size: 100%;
