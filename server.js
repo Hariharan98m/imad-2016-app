@@ -141,6 +141,9 @@ app.get('/ui/20150516_113747.jpg', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', '20150516_113747.jpg'));
 });
 
+app.get('/ui/20151115_084151.jpg', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', '20150516_113747.jpg'));
+});
 
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
