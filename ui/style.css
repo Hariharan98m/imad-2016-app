@@ -74,7 +74,7 @@ h1{
     margin:0 auto;
 }
 .special{
-    width:500px;
+    min-width:500px;
     float: left;
     padding:20px;
     margin-left: 100px;
