@@ -111,7 +111,7 @@ var names=[];
 app.get('/submitbtn', function (req, res) {
   var name=req.query.name;
   var password=req.query.password;
-  pool.query("SELECT * from users where name='"+name+"' and password='"+name+"'",function(err,result){
+  pool.query("SELECT * from users where name='"+name+"' and password='"+password+"'",function(err,result){
         if(err){
             res.status(500).send(JSON.stringify(err));
         }
@@ -120,7 +120,7 @@ app.get('/submitbtn', function (req, res) {
             res.send('Invalid username/password. Try Again');
             }
             else{
-            res.send(result.rows);
+            res.send('Successful check for credentials');
             }
         }
     });
