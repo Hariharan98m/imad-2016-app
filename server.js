@@ -218,7 +218,13 @@ app.get('/articles', function (req, res) {
     else
         {
             var articleData=result.rows;
-            res.send(JSON.stringify(articleData[0].title));
+            var list='<ul>';
+    for (var i=0;i<=articleData.length;i++){
+        var title=articleData[i].title;
+        list=list+'<li><a href=/'+title+'>'+title+'</a></li>';
+    }
+    list+='</ul>';
+            res.send(JSON.stringify(list));
         }
     });
 });
