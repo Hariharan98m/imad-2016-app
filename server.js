@@ -220,8 +220,8 @@ app.get('/articles', function (req, res) {
             var articleData=result.rows;
             var list='<ul>';
     for (var i=0;i<=articleData.length;i++){
-        var title=articleData[i].title;
-        list=list+'<li><a href=/'+title+'>'+title+'</a></li>';
+        var title1=articleData[i].title;
+        list=list+'<li><a href=/'+title1+'>'+title1+'</a></li>';
     }
     list+='</ul>';
             res.send(JSON.stringify(list));
