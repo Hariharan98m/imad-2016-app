@@ -74,6 +74,7 @@ h1{
     margin:0 auto;
 }
 .special{
+    font-family:calibri;
     width:500px;
     float: left;
     padding:20px;
