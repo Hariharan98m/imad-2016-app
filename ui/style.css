@@ -12,7 +12,7 @@ h1{
     color: #de9426;
 }
 .center {
-    text-align: center;
+    padding-left:650px;
 }
 .left{
     float:left;
