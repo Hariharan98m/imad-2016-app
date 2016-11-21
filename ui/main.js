@@ -16,6 +16,9 @@ submit.onclick=function(){
               if(reply=='Successful check for credentials'){
                   cont.innerHTML='Continue';
               }
+              else{
+                  cont.innerHTML='';
+              }
               var message=document.getElementById('message');
               message.innerHTML=reply;
               
