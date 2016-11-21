@@ -90,11 +90,38 @@ return htmltemplate;
 
 
 }
-/*
-function temp(req,res){
-    for (i=0;i<=)
+
+function temp(data){
+    list='<ul>';
+    for (var i=0;i<=data.length;i++){
+        var title=data[i].title;
+        list+='<li>'+title+'</li>';
+    }
+    list+='</ul>';
+    var htmltemplate=`
+ <html>
+    <head>
+    <link href="/ui/style.css" rel="stylesheet" />
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    </head>
+    <body>
+        <div class=container>
+        <div>
+            <a href='/'>Home</a>
+        </div>
+        <hr/>
+        <h3>
+            MY ARTICLES
+        </h3>
+        <div>
+            ${list}
+        </div>
+        </div>
+    </body>
+</html>`;
+return htmltemplate;
 }
-*/
+
 app.get('/', function (req, res) {
  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
