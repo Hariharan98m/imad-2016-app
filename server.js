@@ -90,7 +90,11 @@ return htmltemplate;
 
 
 }
-
+/*
+function temp(req,res){
+    for (i=0;i<=)
+}
+*/
 app.get('/', function (req, res) {
  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -175,6 +179,23 @@ app.get('/ui/articles.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'articles.html'));
 });
 
+app.get('/articles', function (req, res) {
+    
+    pool.query("SELECT title from 'articles'",function(err,result){
+    if(err){
+        res.status(500).send(err.toString());
+    }
+    else if(result.rows.length===0){
+        res.status(404).send('No articles penned by the author');
+    }
+    else
+        {
+            var articleData=result.rows;
+            res.send(JSON.stringify(articleData));
+        }
+    });
+});
+
 
 app.get('/:articleName',function(req,res){
     res.send(req.params.articleName);
@@ -188,7 +209,7 @@ app.get('/:articleName',function(req,res){
     }
     else
         {
-            var articleData=result.rows[0];
+            var articleData=result.rows;
             res.send(JSON.stringify(articleData));
         }
     });
