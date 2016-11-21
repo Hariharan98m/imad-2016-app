@@ -59,8 +59,6 @@ function f(data){
     var heading=data.heading;
     var date=data.date;
     var content=data.content;
-    
-    
  var htmltemplate=`
  <html>
     <head>
@@ -73,7 +71,7 @@ function f(data){
     <body>
         <div class=special>
             <div>
-                <a href='/'>Home</a>
+                <a href='/articles'>Back to Articles</a>
             </div>
             <hr/>
             <h1>
