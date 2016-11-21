@@ -15,7 +15,7 @@ var config={
    
 };
 var pool=new Pool(config);
-
+var usernamesaved='X';
 var articles={
     articleOne:{
   title :'Article 1 Hari',
@@ -82,6 +82,20 @@ function f(data){
             </div>
                 ${content}
         </div>
+        
+        <div>
+        <h5>Comments:</h5>
+        <p><input type='text' id='cts' class=special placeholder='Comments'></p>
+        <p><input type='submit' value="Submit" id='subbtn'></p>
+        <p id='sc'></p>
+        <p>
+        <a href=/${title} id='refresh'>
+        
+        <a>
+        </p>
+        </div>
+        <script type="text/javascript" src="/ui/main.js">
+        </script>
     </body>
 </html>`;
 return htmltemplate;
@@ -136,9 +150,10 @@ app.get('/counter', function (req, res) {
 });
 
 
-var names=[];
+
 app.get('/submitbtn', function (req, res) {
   var name=req.query.name;
+  usernamesaved=req.query.name;
   var password=req.query.password;
   pool.query("SELECT * from users where name='"+name+"' and password='"+password+"'",function(err,result){
         if(err){
@@ -174,6 +189,39 @@ app.get('/test-db',function(req,res){
     
     
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.get('/ui/ologo.PNG', function (req, res) {
@@ -239,6 +287,7 @@ app.get('/:articleName',function(req,res){
         {
             var articleData=result.rows[0];
             res.send(f(articleData));
+            
         }
     });
 });
