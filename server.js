@@ -219,7 +219,13 @@ app.get('/articles', function (req, res) {
     else
         {
             var articleData=result.rows;
-            res.send(JSON.stringify(temp(articleData)));
+            list='<ul>';
+    for (var i=0;i<=data.length;i++){
+        var title=data[i].title;
+        list+='<li><a href=/'+title+'>'+title+'</a></li>';
+    }
+    list+='</ul>';
+            res.send(JSON.stringify(list));
         }
     });
 });
