@@ -228,7 +228,7 @@ app.get('/articles', function (req, res) {
 
 app.get('/:articleName',function(req,res){
     //'article-one'
-    pool.query("SELECT * from 'articles' where title='"+req.params.articleName+"'",function(err,result){
+    pool.query("SELECT * from 'articles' where title=$1",[req.params.articleName],function(err,result){
     if(err){
         res.status(500).send(err.toString());
     }
