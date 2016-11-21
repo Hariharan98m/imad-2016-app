@@ -36,6 +36,7 @@ request.open('GET','http://hariharan98m.imad.hasura-app.io/submitbtn?name='+name
 request.send(null);
 }; 
 
+
 /*
 var button=document.getElementById('counter');
 button.onclick=function(){
