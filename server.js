@@ -137,7 +137,7 @@ app.get('/test-db',function(req,res){
         }
         else
         {
-            res.send(result);
+            res.send(result.rows);
         }
     });
     //respond with data
