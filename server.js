@@ -137,6 +137,11 @@ app.get('/ui/ologo.PNG', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'ologo.PNG'));
 });
 
+app.get('/ui/20150516_113747.jpg', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', '20150516_113747.jpg'));
+});
+
+
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
