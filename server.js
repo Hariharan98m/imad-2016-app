@@ -117,7 +117,7 @@ app.get('/submitbtn', function (req, res) {
         }
         else
         {   if(result.rows.length===0){
-            res.send('Invalid username/password');
+            res.send('Invalid username/password. Try Again');
             }
             else{
             res.send('Successful check for credentials');
@@ -171,6 +171,9 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
+app.get('/ui/articles.html', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'articles.html'));
+});
 
 
 app.get('/:articleName',function(req,res){
