@@ -98,7 +98,6 @@ function temp(data){
         list+='<li><a href=/'+title+'>'+title+'</a></li>';
     }
     list+='</ul>';
-    return list;
     var htmltemplate=`
  <html>
     <head>
@@ -219,7 +218,7 @@ app.get('/articles', function (req, res) {
     else
         {
             var articleData=result.rows;
-            list='<ul>';
+            var list='<ul>';
     for (var i=0;i<=data.length;i++){
         var title=data[i].title;
         list+='<li><a href=/'+title+'>'+title+'</a></li>';
