@@ -225,13 +225,38 @@ app.post('/create-user', function (req, res) {
     //JSON
     var username=req.body.username;
     var password=req.body.password;
-    var salt=crypto.getRandomBytes(128).toString('hex');
+    var salt=crypto.RandomBytes(128).toString('hex');
     var dBstring=hash(password,salt);
     pool.query('insert into users(name,password) values ($1,$2)',[name,dBstring],function(err,result){
         if(err){
         res.status(500).send(err.toString());
     }
     else {
+        res.send('User successfully created:'+username);
+    }
+    
+    });
+});
+
+
+app.post('/login', function (req, res) {
+    //username,password
+    //JSON
+    var username=req.body.username;
+    var password=req.body.password;
+    pool.query('Select * from users where username=',[username],function(err,result){
+        if(err){
+        res.status(500).send(err.toString());
+    }
+    else if(result.rows.length===0){
+    
+        res.send(403).status('Username/Password is Invalid');
+    }
+    else{
+        var dBstring=result.rows[0].password;
+        var salt=dBstring.split('$')[2];
+        var hashed=hash(password,salt);
+        if 
         res.send('User successfully created:'+username);
     }
     
