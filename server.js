@@ -172,7 +172,7 @@ app.get('/submitbtn', function (req, res) {
     
 });
 
-
+var crypto=require('crypto');
 app.get('/test-db',function(req,res){
     //make a request
     var name='hari';
@@ -191,7 +191,17 @@ app.get('/test-db',function(req,res){
 });
 
 
+function hash(input){
+    var hashed=crpto.pbkdf2Sync(input,'this-is-a-random-string',10000,512,'sha512');
+    return hashed.toString(hex);
+}
 
+app.get('/hash/:input',function(req,res){
+    //make a request
+    var hashedString=hash(req.params.input);
+    res.send(hashedString);
+    
+});
 
 
 
