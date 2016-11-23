@@ -13,9 +13,8 @@ h1{
     color: #de9426;
 }
 .center {
-    text-align: center;
-    padding-left: 625px;
-    padding-top: 100px;
+    margin:0 auto;
+    max-width:200px;
 }
 .text-big {
     font-size: 300%;
@@ -30,10 +29,9 @@ h1{
     color: pink;
 }
 .container {
-    text-align:center;
     max-width: 500px;
     padding:20px;
-    margin: 20px;
+    margin:0 auto;
     border-style: solid;
 }
 .logo{
