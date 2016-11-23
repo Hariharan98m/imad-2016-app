@@ -1,4 +1,5 @@
 body {
+    text-align:center;
     font-family: calibri;
     background-color: white;
     margin-top: 75px;
@@ -39,9 +40,7 @@ h1{
     font-size:200%;
     color: #de9426;
 }
-.welcome {
-    text-align: center;
-}
+
 .header{
     max-width:200px;
     text-align:center;
