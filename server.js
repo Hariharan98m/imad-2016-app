@@ -238,8 +238,8 @@ app.get('/ui/ologo.PNG', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'ologo.PNG'));
 });
 
-app.get('/ui/20150516_113747.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', '20150516_113747.jpg'));
+app.get('/ui/profilepic.PNG', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'profilepic.PNG'));
 });
 
 app.get('/ui/20151115_084151.jpg', function (req, res) {
