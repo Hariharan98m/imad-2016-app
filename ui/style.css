@@ -16,14 +16,6 @@ h1{
     padding-left: 625px;
     padding-top: 100px;
 }
-.left{
-    float:left;
-       margin-left:200px;
-}
-.right{
-    float:right;
-    margin-right:100px;
-}
 .text-big {
     font-size: 300%;
 }
@@ -32,26 +24,12 @@ h1{
     font-weight: bold;
 }
 
-.o{ 
- 
-    width:400px;
-    height:150px;
-}
-.dev{
-    width:400px;
-    height:300px;
-  transform: rotate(180deg);
-}
-.dev2{
-    width:400px;
-    height:auto;
-  transform: rotate(270deg);
-}
 .c1{
     font-size: 100%;
     color: pink;
 }
 .container {
+    text-align:center;
     max-width: 500px;
     padding:20px;
     margin: 20px;
