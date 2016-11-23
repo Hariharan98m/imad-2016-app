@@ -193,7 +193,7 @@ app.get('/test-db',function(req,res){
 
 function hash(input){
     var hashed=crypto.pbkdf2Sync(input,'this-is-a-random-string',10000,512,'sha512');
-    return hashed.toString('hex');
+    return ['pbkdf2Sync','10000','this-is-a-random-string',hashed.toString('hex')].join('$');
 }
 
 app.get('/hash/:input',function(req,res){
