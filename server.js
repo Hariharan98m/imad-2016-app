@@ -220,13 +220,13 @@ app.get('/hash/:input',function(req,res){
 
 
 
-app.post('/create-user', function (req, res) {
+app.post('/create-user/:password/:username', function (req, res) {
     //username,password
     //JSON
-    var username=req.body.username;
+    var username=req.params.username;
     
     alert(username.toString());
-    var password=req.body.password;
+    var password=req.params.password;
     
     alert(password.toString());
     var salt=crypto.RandomBytes(128).toString('hex');
