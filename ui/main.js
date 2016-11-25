@@ -117,7 +117,6 @@ sub.onclick=function(){
 
 var name= document.getElementById('name').value;
 var password=document.getElementById('pw').value;
-var pswd=PasswordInput.value;
 request.open('POST','http://hariharan98m.imad.hasura-app.io/signin', true);
 request.setRequestHeader('Content-Type','application/json');
 request.send(JSON.stringify({username:name},{password:password}));
