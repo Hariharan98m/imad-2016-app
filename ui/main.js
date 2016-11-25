@@ -87,8 +87,6 @@ sub.onclick=function(){
           //Take some action
           if(request.status==200){
               //Capture the response and save it
-              console.log('Logged in');
-              alert('Logged in');
               var reply=request.responseText;
               var cont=document.getElementById('continue');
               if(reply=='User successfully created'){
@@ -103,7 +101,7 @@ sub.onclick=function(){
           }
         else{
               alert('Something went wrong');
-              }
+            }
           
       }  
       //Not done yet
