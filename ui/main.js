@@ -1,4 +1,5 @@
 
+/*
 var submit=document.getElementById('submitbtn');
 submit.onclick=function(){
     
@@ -34,7 +35,7 @@ var PasswordInput=document.getElementById('pw');
 var pswd=PasswordInput.value;
 request.open('GET','http://hariharan98m.imad.hasura-app.io/submitbtn?name='+name+'&password='+pswd, true);
 request.send(null);
-}; 
+};*/ 
 
 
 /*
@@ -75,7 +76,7 @@ request.send(null);
 
 //new user
 var sub=document.getElementById('signsubmitbtn');
-submit.onclick=function(){
+sub.onclick=function(){
     
     //Make a request to the server and send the name
     var request=new XMLHttpRequest();
