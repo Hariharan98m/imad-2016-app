@@ -250,14 +250,19 @@ app.post('/login', function (req, res) {
     }
     else if(result.rows.length===0){
     
-        res.send(403).status('Username/Password is Invalid');
+        res.send(403).status('Username Invalid');
     }
     else{
         var dBstring=result.rows[0].password;
         var salt=dBstring.split('$')[2];
         var hashed=hash(password,salt);
-        if 
-        res.send('User successfully created:'+username);
+        if (hashed===dBstring)
+        res.send('Successful check for credentials:'+username);
+        else{
+        res.send(403).status('Username Invalid');
+    }
+    
+        
     }
     
     });
