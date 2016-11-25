@@ -220,18 +220,14 @@ app.get('/hash/:input',function(req,res){
 
 
 
-app.post('/create-user/:password/:username', function (req, res) {
+app.post('/create-user', function (req, res) {
     //username,password
     //JSON
-    var username=req.params.username;
-    
-    alert(username.toString());
-    var password=req.params.password;
-    
-    alert(password.toString());
+    var username=req.body.username;
+    var password=req.body.password;
     var salt=crypto.RandomBytes(128).toString('hex');
     var dBstring=hash(password,salt);
-    pool.query('insert into users(name,password) values ($1,$2)',[name,dBstring],function(err,result){
+    pool.query("insert into 'users'(name,password) values ($1,$2)",[name,dBstring],function(err,result){
     if(err){
         res.status(500).send('Username alredy taken. Choose a different one');
     }
