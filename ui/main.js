@@ -101,13 +101,8 @@ sub.onclick=function(){
               message.innerHTML=reply;
               
           }
-          else if(status==403){
-              console.log('Password is incorrect');
-                alert('Password is incorrect');
-              
-          }
-              else{
-                  alert('Something went wrong');
+        else{
+              alert('Something went wrong');
               }
           
       }  
@@ -117,9 +112,9 @@ sub.onclick=function(){
 
 var name= document.getElementById('name').value;
 var password=document.getElementById('pw').value;
-request.open('POST','http://hariharan98m.imad.hasura-app.io/signin', true);
+request.open('POST','http://hariharan98m.imad.hasura-app.io/create-user', true);
 request.setRequestHeader('Content-Type','application/json');
-request.send(JSON.stringify({username:name},{password:password}));
+request.send(JSON.stringify({username:name,password:password}));
 }; 
 
 
@@ -155,7 +150,7 @@ request.send(JSON.stringify({username:name},{password:password}));
 
 
 
-
+/*
 //Submit name
 var submit=document.getElementById('subbtn');
 submit.onclick=function(){
@@ -198,3 +193,4 @@ request.send(null);
 
   
 
+*/
