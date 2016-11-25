@@ -224,7 +224,11 @@ app.post('/create-user', function (req, res) {
     //username,password
     //JSON
     var username=req.body.username;
+    
+    alert(username.toString());
     var password=req.body.password;
+    
+    alert(password.toString());
     var salt=crypto.RandomBytes(128).toString('hex');
     var dBstring=hash(password,salt);
     pool.query('insert into users(name,password) values ($1,$2)',[name,dBstring],function(err,result){
@@ -243,10 +247,8 @@ app.post('/login', function (req, res) {
     //username,password
     //JSON
     var username=req.body.username;
-    alert(username.toString());
     
     var password=req.body.password;
-    alert(password.toString());
     pool.query('Select * from users where username=',[username],function(err,result){
         if(err){
         res.status(500).send(err.toString());
