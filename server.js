@@ -75,7 +75,7 @@ function temp(data,user){
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
-        var date=data[i].date.toString();
+        var date=data[i].date1;
         var d=title+' ('+date+')';
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
         }
