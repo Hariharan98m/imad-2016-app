@@ -16,17 +16,17 @@ sub.onclick=function(){
               var cont=document.getElementById('continue');
               if(reply=='User successfully created:'+username){
                   cont.innerHTML='Continue';
+                  clas='#b4da88';
+                  
               }
               else{
                   cont.innerHTML='';
+                  clas='#e27c74';
               }
+              reply="<div style='background-color:"+clas+"';>"+reply+'</div>';
               var message=document.getElementById('message');
               message.innerHTML=reply;
           }
-        else{
-              alert('Username already taken. Choose a different one');
-            }
-          
       }  
       //Not done yet
     };
