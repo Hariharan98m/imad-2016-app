@@ -394,6 +394,10 @@ app.get('/comment',function(req,res){
             res.send(result.rows[0].comments)
         });
     });
+    }
+    else{
+        res.send('Log in to comment');
+    }
 })
 
 
