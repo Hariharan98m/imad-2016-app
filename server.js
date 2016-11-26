@@ -200,6 +200,17 @@ function hash(input,salt){
     return ['pbkdf2Sync','10000',salt,hashed.toString('hex')].join('$');
 }
 
+
+
+
+app.get('/:input',function(req,res){
+   var input=req.params.input;
+   var salt=crypto.randomBytes(128).toString('hex');
+   return(hash(input,salt));
+});
+
+
+
 app.post('/create-user', function (req, res) {
     //username,password
     //JSON
@@ -315,11 +326,6 @@ app.get('/articles', function (req, res) {
 });
 
 
-app.get('/:input',function(req,res){
-   var input=req.params.input;
-   var salt=crypto.randomBytes(128).toString('hex');
-   return(hash(input,salt));
-});
 
 /*
 
