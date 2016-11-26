@@ -271,7 +271,7 @@ app.get('/comment',function(req,res){
     if (req.session&&req.session.auth&&req.session.auth.userId){
         pool.query("SELECT name from articles where id=$1",[req.session.auth.userId],function(err,result){
                 user=result.rows[0].name;
-        }
+        });
     pool.query("UPDATE articles set comments=$1 where title=$2",[user+':'+comment+'\n',title],function(err,result){
         
         pool.query("SELECT comments from articles where title=$1",[title],function(err,result){
@@ -282,7 +282,7 @@ app.get('/comment',function(req,res){
     else{
         res.send('Log in to comment');
     }
-})
+});
 app.get('/:articleName',function(req,res){
     //'article-one'
     pool.query("SELECT * from articles where title=$1",[req.params.articleName],function(err,result){
