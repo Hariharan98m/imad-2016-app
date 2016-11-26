@@ -12,6 +12,7 @@ sub.onclick=function(){
           //Take some action
           if(request.status==200){
               //Capture the response and save it
+              var clas;
               var reply=request.responseText;
               var cont=document.getElementById('continue');
               if(reply=='User successfully created:'+username){
