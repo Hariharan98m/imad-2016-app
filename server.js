@@ -214,9 +214,6 @@ app.get('/ui/main3.js', function (req, res) {
 app.get('/ui/main2.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main2.js'));
 });
-app.get('/ui/articles.html', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'articles.html'));
-});
 app.get('/articles', function (req, res) {
     
     pool.query("SELECT * from articles",function(err,result){
