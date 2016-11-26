@@ -22,7 +22,7 @@ sub.onclick=function(){
               }
               else{
                   cont.innerHTML='';
-                  clas='#e27c74';
+                  clas='rgba(244, 67, 54, 0.35)';
               }
               reply="<div style='background-color:"+clas+"';>"+reply+'</div>';
               var message=document.getElementById('message');
