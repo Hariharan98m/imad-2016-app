@@ -74,6 +74,56 @@ request.send(null);
 
 
 
+//existing user
+var sub1=document.getElementById('loginsubmitbtn');
+sub1.onclick=function(){
+    
+    //Make a request to the server and send the name
+    var request=new XMLHttpRequest();
+    
+    //Capture the response and store it in a variable
+    request.onreadystatechange=function(){
+      if (request.readyState==XMLHttpRequest.DONE){
+          //Take some action
+          if(request.status==200){
+              //Capture the response and save it
+              var reply=request.responseText;
+              var cont=document.getElementById('continue');
+              if(reply=='Successful check for credentials:'+username){
+                  cont.innerHTML='Continue';
+              }
+              else{
+                  cont.innerHTML='';
+              }
+              var message=document.getElementById('message');
+              message.innerHTML=reply;
+              
+          }
+        else{
+              alert(request.responseText);
+            }
+      }  
+      //Not done yet
+    };
+    
+
+var username= document.getElementById('name').value;
+var password=document.getElementById('pw').value;
+request.open('POST','http://hariharan98m.imad.hasura-app.io/login', true);
+request.setRequestHeader('Content-Type','application/json');
+request.send(JSON.stringify({'username':username,'password':password}));
+};
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -131,46 +181,7 @@ request.send(JSON.stringify({'username':username,'password':password}));
 
 
 
-
-//existing user
-var sub1=document.getElementById('loginsubmitbtn');
-sub1.onclick=function(){
-    
-    //Make a request to the server and send the name
-    var request=new XMLHttpRequest();
-    
-    //Capture the response and store it in a variable
-    request.onreadystatechange=function(){
-      if (request.readyState==XMLHttpRequest.DONE){
-          //Take some action
-          if(request.status==200){
-              //Capture the response and save it
-              var reply=request.responseText;
-              var cont=document.getElementById('continue');
-              if(reply=='Successful check for credentials:'+username){
-                  cont.innerHTML='Continue';
-              }
-              else{
-                  cont.innerHTML='';
-              }
-              var message=document.getElementById('message');
-              message.innerHTML=reply;
-              
-          }
-        else{
-              alert(request.responseText);
-            }
-      }  
-      //Not done yet
-    };
-    
-
-var username= document.getElementById('name').value;
-var password=document.getElementById('pw').value;
-request.open('POST','http://hariharan98m.imad.hasura-app.io/login', true);
-request.setRequestHeader('Content-Type','application/json');
-request.send(JSON.stringify({'username':username,'password':password}));
-}; 
+ 
 
 
 
