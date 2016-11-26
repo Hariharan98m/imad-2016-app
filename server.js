@@ -91,6 +91,7 @@ function f(data){
             <p id='sc'></p>
             <br>
             <input type='text' id='cts' class=special1 placeholder='Comments'>
+            <br><br>
             <br>
             <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'>
             </div>
