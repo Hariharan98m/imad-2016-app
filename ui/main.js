@@ -89,7 +89,7 @@ sub.onclick=function(){
               //Capture the response and save it
               var reply=request.responseText;
               var cont=document.getElementById('continue');
-              if(reply=='User successfully created'){
+              if(reply=='User successfully created:'+username){
                   cont.innerHTML='Continue';
               }
               else{
@@ -97,7 +97,6 @@ sub.onclick=function(){
               }
               var message=document.getElementById('message');
               message.innerHTML=reply;
-              
           }
         else{
               alert('Username already taken. Choose a different one');
@@ -131,7 +130,7 @@ sub1.onclick=function(){
               //Capture the response and save it
               var reply=request.responseText;
               var cont=document.getElementById('continue');
-              if(reply=='Successful check for credentials'){
+              if(reply=='Successful check for credentials:'+username){
                   cont.innerHTML='Continue';
               }
               else{
@@ -144,7 +143,6 @@ sub1.onclick=function(){
         else{
               alert(request.responseText);
             }
-          
       }  
       //Not done yet
     };
