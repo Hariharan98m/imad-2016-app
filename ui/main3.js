@@ -10,8 +10,7 @@ sub.onclick=function(){
               //Capture the response and save it
               var reply=request.responseText;
               temp=document.getElementById('sc').value;
-              temp+=reply;
-              sc.innerHTML=temp;
+              temp.innerHTML=reply;
           }
       }  
       //Not done yet
