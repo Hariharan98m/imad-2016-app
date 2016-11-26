@@ -89,7 +89,7 @@ function temp(data,user){
     </head>
     <body>
         <div class=special>
-        <h4>Hi ${user} </h4>
+        <h4> ${user} </h4>
             <div>
                 <a href='/'>Home</a>
             </div>
@@ -226,9 +226,11 @@ app.get('/articles', function (req, res) {
                 var user;
             if (req.session&&req.session.auth&&req.session.auth.userId)
             {   pool.query("SELECT name from users where id=$1",[req.session.auth.userId.toString()],function(err,result){
-                    user=result.rows[0].name;
+                    user='Hi '+result.rows[0].name;
                 });
             }
+            else
+            user='You are not logged in';
             res.send(temp(articleData,user));
             }
     }
