@@ -81,13 +81,13 @@ function f(data){
                 ${heading}
             </h1>
             <div>
-                ${date}
+                ${date.toDateString()}
             </div>
                 ${content}
         </div>
         
-        <div>
-        <h5>Comments:</h5>
+        <div class=container>
+        <h4>Comments:</h4>
         <p><input type='text' id='cts' class=special placeholder='Comments'></p>
         <p><input type='submit' value="Submit" id='subbtn'></p>
         <p id='sc'></p>
