@@ -228,6 +228,7 @@ app.post('/login', function (req, res) {
     //JSON
     var username=req.body.username;
     var password=req.body.password;
+    res.send(username+password);
     console.log(username);
     console.log(password);
     pool.query('Select * from users where username=',[username],function(err,result){
