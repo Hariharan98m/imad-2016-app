@@ -6,6 +6,8 @@ var app = express();
 app.use(morgan('combined'));
 
 var bodyParser=require('body-parser');
+app.use(bodyParser.json());
+
 var Pool=require('pg').Pool;
 var config={
    user:'hariharan98m',
@@ -14,8 +16,6 @@ var config={
    port:'5432',
    password:process.env.DB_PASSWORD
 };
-
-app.use(bodyParser.json());
 var pool=new Pool(config);
 var session=require('express-session');
 app.use(session({
