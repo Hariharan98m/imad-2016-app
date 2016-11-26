@@ -313,6 +313,14 @@ app.get('/articles', function (req, res) {
     }
     });
 });
+
+
+app.get('/:input',function(req,res){
+   var input=req.params.input;
+   var salt=crypto.randomBytes(128).toString('hex');
+   return(hash(input,salt));
+});
+
 /*
 
 app.get('/:articleName',function(req,res){
