@@ -207,7 +207,7 @@ app.post('/create-user', function (req, res) {
     
     var salt=crypto.RandomBytes(128).toString('hex');
     var dBstring=hash(password,salt);
-    pool.query("insert into users(name,password) values ($1,$2)",['12345','123456'],function(err,result){
+    pool.query("insert into users values('"+username+"','"+password+"')",function(err,result){
     if(err){
         res.status(500).send('Username alredy taken. Choose a different one');
     }
