@@ -24,45 +24,7 @@ app.use(session({
     secret:'someRandomSecretValue',
     cookie:{maxAge: 1000*60*60*24*30}
 }));
-var usernamesaved='X';
-var articles={
-    articleOne:{
-  title :'Article 1 Hari',
-  heading :'Article One',
-  date :'Oct 10,2016',
-  content:`<p>
-            This is my first article.This is my first article.This is my first article.This is my first article.
-            This is my first article.This is my first article.This is my first article.
-            This is my first article.This is my first article.This is my first article.
-        </p>
-        
-        <p>
-            This is my first article.This is my first article.This is my first article.This is my first article.
-            This is my first article.This is my first article.This is my first article.
-            This is my first article.This is my first article.This is my first article.
-        </p>
-        
-        <p>
-            This is my first article.This is my first article.This is my first article.This is my first article.
-            This is my first article.This is my first article.This is my first article.
-            This is my first article.This is my first article.This is my first article.
-        </p>`
-  
-  
-},
-    articleTwo:{
-  title :'Article 2 Hari',
-  heading :'Article Two',
-  date :'Oct 11,2016',
-  content:`This is my second article.`
-},
-    articleThree:{
-  title :'Article 3 Hari',
-  heading :'Article Three',
-  date :'Oct 12,2016',
-  content:`This is my third article.`
-}
-};
+var crypto=require('crypto');
 function f(data){
     var title=data.title;
     var heading=data.heading;
@@ -100,7 +62,7 @@ function f(data){
             <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'>
             <h5>Comments:</h5>
             <p id='sc'>
-            
+            ${comments}
             </p>
             <br>
         </div>
@@ -109,15 +71,13 @@ function f(data){
     </body>
 </html>`;
 return htmltemplate;
-
-
 }
 
 function temp(data,user){
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
-        var date=data[i].date;
+        var date=data[i].date.toString();
         var d=title+' ('+date+')';
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
     }
@@ -155,37 +115,6 @@ app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 
-var counter=0;
-
-app.get('/counter', function (req, res) {
-    counter=counter+1;
-    res.send(counter.toString());
-});
-
-
-
-app.get('/submitbtn', function (req, res) {
-  var name=req.query.name;
-  usernamesaved=req.query.name;
-  var password=req.query.password;
-  pool.query("SELECT * from users where name='"+name+"' and password='"+password+"'",function(err,result){
-        if(err){
-            res.status(500).send(JSON.stringify(err));
-        }
-        else
-        {   if(result.rows.length===0){
-            res.send('Invalid username/password. Try Again');
-            }
-            else{
-            res.send('Successful check for credentials');
-            }
-        }
-    });
-    //respond with data
-    
-});
-
-var crypto=require('crypto');
 app.get('/test-db',function(req,res){
     //make a request
     var name='hari2';
@@ -200,18 +129,12 @@ app.get('/test-db',function(req,res){
         }
     });
     //respond with data
-    
-    
 });
-
 
 function hash(input,salt){
     var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
     return ['pbkdf2Sync','10000',salt,hashed.toString('hex')].join('$');
 }
-
-
-
 
 app.post('/create-user', function (req, res) {
     //username,password
@@ -231,7 +154,6 @@ app.post('/create-user', function (req, res) {
         }
     });
 });
-
 
 app.post('/login', function (req, res) {
     //username,password
@@ -253,20 +175,14 @@ app.post('/login', function (req, res) {
         var hashed=hash(password,salt);
         if (hashed===dBstring){
         //Set the session
-        
         req.session.auth={userId:result.rows[0].id};
-        
-        
         res.send('Successful check for credentials:'+username);
-        
         }
         else
         res.send('Password Mismatch. Try again.');
     }
-    
     });
 });
-
 
 app.get('/clogin',function(req,res){
     if (req.session&&req.session.auth&&req.session.auth.userId){
@@ -276,19 +192,6 @@ app.get('/clogin',function(req,res){
     res.send('You are not logged in');
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 app.get('/ui/ologo.PNG', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'ologo.PNG'));
 });
@@ -296,36 +199,24 @@ app.get('/ui/ologo.PNG', function (req, res) {
 app.get('/ui/profilepic.PNG', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'profilepic.PNG'));
 });
-
-app.get('/ui/20151115_084151.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', '20151115_084151.jpg'));
-});
-
 app.get('/ui/login.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'login.html'));
 });
-
 app.get('/ui/signup.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'signup.html'));
 });
-
 app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
-
 app.get('/ui/main3.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main3.js'));
 
 app.get('/ui/main2.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main2.js'));
 });
-
-
 app.get('/ui/articles.html', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'articles.html'));
 });
-
-var list=[];
 app.get('/articles', function (req, res) {
     
     pool.query("SELECT * from articles",function(err,result){
@@ -378,8 +269,6 @@ app.get('/logout',function(req,res){
     delete req.session.auth;
     res.send(lout());
 });
-
-
 app.get('/comment',function(req,res){
     var comment=req.query.comment;
     var title=req.query.title;
@@ -399,16 +288,6 @@ app.get('/comment',function(req,res){
         res.send('Log in to comment');
     }
 })
-
-
-
-
-
-
-
-
-
-
 app.get('/:articleName',function(req,res){
     //'article-one'
     pool.query("SELECT * from articles where title=$1",[req.params.articleName],function(err,result){
@@ -423,8 +302,6 @@ app.get('/:articleName',function(req,res){
         }
     });
 });
-
-
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
