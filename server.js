@@ -113,7 +113,7 @@ function temp(data,user){
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
         var date=data[i].date;
-        var d=title+' '+date;
+        var d=title+' ('+date+')';
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
     }
     list+='</ul>';
