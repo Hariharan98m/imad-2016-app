@@ -68,10 +68,11 @@ function f(data){
     var heading=data.heading;
     var date=data.date;
     var content=data.content;
+    var comments=data.comments;
  var htmltemplate=`
  <html>
     <head>
-        <title>
+        <title id=title>
             ${title}
         </title>
     <link href="/ui/style.css" rel="stylesheet" />
@@ -93,15 +94,17 @@ function f(data){
         </div>
         
         <div style='margin:100px'>
-            <h5>Comments:</h5>
-            <p id='sc'></p>
-            <br>
-            <input type='text' id='cts' class=special1 placeholder='Comments'>
+            <input type='text' id='cts' class=special1 placeholder='Comment box'>
             <br><br>
             <br>
             <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'>
-            </div>
-            <script type="text/javascript" src="/ui/main.js">
+            <h5>Comments:</h5>
+            <p id='sc'>
+            
+            </p>
+            <br>
+        </div>
+            <script type="text/javascript" src="/ui/main3.js">
             </script>    
     </body>
 </html>`;
@@ -310,6 +313,8 @@ app.get('/ui/main.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main.js'));
 });
 
+app.get('/ui/main3.js', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'main3.js'));
 
 app.get('/ui/main2.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main2.js'));
@@ -335,11 +340,70 @@ app.get('/articles', function (req, res) {
     else
         {
             var articleData=result.rows;
+            var user;
+            
+    if (req.session&&req.session.auth&&req.session.auth.userId)
+        {  
+            pool.query("SELECT name from articles where id=$1",[req.session.auth.userId],function(err,result){
+                user=result.rows[0].name;
+            }
+        }
+        res.send(f(articleData,user));
+            
             res.send(temp(articleData,user));
         }
     }
     });
 });
+
+function lout(){
+    var htmltemp=`<html>
+    <head>
+    <link href="/ui/style.css" rel="stylesheet" />
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    </head>
+    <body>
+        <div class=header>
+        <h5>Logout Successful</h5>
+        <hr/>
+        <div>
+        <a href='/'>Back to Home</a>
+        </div>
+    </body>
+</html>`;
+return htmltemp;
+}
+
+app.get('/logout',function(req,res){
+    delete req.session.auth;
+    res.send(lout());
+});
+
+
+app.get('/comment',function(req,res){
+    var comment=req.query.comment;
+    var title=req.query.title;
+    var user;
+    if (req.session&&req.session.auth&&req.session.auth.userId){
+        pool.query("SELECT name from articles where id=$1",[req.session.auth.userId],function(err,result){
+                user=result.rows[0].name;
+        }
+    pool.query("UPDATE articles set comments=$1 where title=$2",[user+':'+comment+'\n',title],function(err,result){
+        
+        pool.query("SELECT comments from articles where title=$1",[title],function(err,result){
+            res.send(result.rows[0].comments)
+        });
+    });
+})
+
+
+
+
+
+
+
+
+
 
 app.get('/:articleName',function(req,res){
     //'article-one'
@@ -352,21 +416,10 @@ app.get('/:articleName',function(req,res){
     }
     else
         {   var articleData=result.rows[0];
-            var user;
-            
-    if (req.session&&req.session.auth&&req.session.auth.userId)
-        {  
-            pool.query("SELECT name from articles where id=$1",[req.session.auth.userId],function(err,result){
-                user=result.rows[0].name;
-            }
-        }
-        res.send(f(articleData,user));
-            
         }
     });
 });
 
-app.get('/logout')
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
