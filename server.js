@@ -110,7 +110,7 @@ function temp(data){
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
-        list+='<li><a href=/'+title+'>'+title+'</a></li>';
+        list+='<li><a href=/'+title+'>'+title+'</a></li><br>';
     }
     list+='</ul>';
     var htmltemplate=`
@@ -120,7 +120,7 @@ function temp(data){
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     </head>
     <body>
-        <div class=>
+        <div class=special>
             <div>
                 <a href='/'>Home</a>
             </div>
@@ -310,7 +310,7 @@ app.get('/articles', function (req, res) {
     else{
         
     if(result.rows.length===0){
-        res.status(404).send('No articles penned by the author');
+        res.send('No articles penned by the author');
     }
     else
         {
