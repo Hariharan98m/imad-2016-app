@@ -226,7 +226,7 @@ app.post('/create-user', function (req, res) {
 app.post("/login", function (req, res) {
     //username,password
     //JSON
-    var username=req.params.username;
+    var username=req.body.username;
     
     var password=req.params.password;
     pool.query('Select * from users where username=',[username],function(err,result){
@@ -244,7 +244,7 @@ app.post("/login", function (req, res) {
         if (hashed===dBstring)
         res.send('Successful check for credentials:'+username);
         else{
-        res.send(403).status('Username Invalid');
+        res.send(403).status('Password Mismatch');
     }
     
         
