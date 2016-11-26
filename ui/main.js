@@ -95,16 +95,20 @@ sub.onclick=function(){
           if(request.status==200){
               //Capture the response and save it
               var reply=request.responseText;
+              var clas;
               var cont=document.getElementById('continue');
               if(reply=='Successful check for credentials:'+username){
                   cont.innerHTML='Continue';
+                  clas='#b4da88';
+                  
               }
               else{
                   cont.innerHTML='';
+                  clas='#e27c74';
               }
+              reply="<div style='background-color:"+clas+"';>"+reply+'</div>';
               var message=document.getElementById('message');
               message.innerHTML=reply;
-              
           }
         else{
               alert(request.responseText);
