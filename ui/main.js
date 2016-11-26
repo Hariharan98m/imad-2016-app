@@ -1,7 +1,7 @@
 
 
 var sub=document.getElementById('signsubmitbtn');
-var sub1=document.getElementById('loginsubmitbtn');
+
 sub.onclick=function(){
     
     //Make a request to the server and send the name
@@ -124,6 +124,7 @@ request.send(null);
 
 
 //existing user
+var sub1=document.getElementById('loginsubmitbtn');
 sub1.onclick=function(){
     //Make a request to the server and send the name
     var request=new XMLHttpRequest();
