@@ -321,7 +321,7 @@ app.get('/ui/articles.html', function (req, res) {
 var list=[];
 app.get('/articles', function (req, res) {
     
-    pool.query("SELECT title from articles",function(err,result){
+    pool.query("SELECT * from articles",function(err,result){
     if(err){
         res.status(500).send(err.toString());
     }
