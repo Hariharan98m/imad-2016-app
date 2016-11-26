@@ -198,6 +198,7 @@ function hash(input,salt){
     var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');
     return ['pbkdf2Sync','10000',salt,hashed.toString('hex')].join('$');
 }
+
 app.post('/create-user', function (req, res) {
     //username,password
     //JSON
