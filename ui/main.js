@@ -74,7 +74,22 @@ request.send(null);
 
 
 
+
+
+
+
+
+
+
 //new user
+
+
+
+
+
+
+
+
 var sub=document.getElementById('signsubmitbtn');
 sub.onclick=function(){
     
@@ -115,6 +130,8 @@ request.send(JSON.stringify({'username':username,'password':password}));
 }; 
 
 
+
+
 //existing user
 var sub1=document.getElementById('loginsubmitbtn');
 sub1.onclick=function(){
@@ -150,7 +167,7 @@ sub1.onclick=function(){
 
 var username= document.getElementById('name').value;
 var password=document.getElementById('pw').value;
-request.open('POST','http://hariharan98m.imad.hasura-app.io/create-user', true);
+request.open('POST','http://hariharan98m.imad.hasura-app.io/login', true);
 request.setRequestHeader('Content-Type','application/json');
 request.send(JSON.stringify({'username':username,'password':password}));
 }; 
