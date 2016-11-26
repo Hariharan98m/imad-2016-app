@@ -56,6 +56,13 @@ h1{
     margin: 100px;
     border-style: solid;
 }
+.special1{
+    font-family:calibri;
+    width:500px;
+    padding:20px;
+    border-style: solid;
+}
+
 .align{
     text-align:center;
 }
