@@ -13,13 +13,11 @@ var config={
    host:'db.imad.hasura-app.io',
    port:'5432',
    password:process.env.DB_PASSWORD
-   
 };
 
 app.use(bodyParser.json());
 var pool=new Pool(config);
 var session=require('express-session');
-
 app.use(session({
     secret:'someRandomSecretValue',
     cookie:{maxAge: 1000*60*60*24*30}
@@ -80,7 +78,7 @@ function temp(data,user){
         var date=data[i].date.toString();
         var d=title+' ('+date+')';
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
-    }
+        }
     list+='</ul>';
     var htmltemplate=`
  <html>
@@ -165,7 +163,6 @@ app.post('/login', function (req, res) {
         res.status(500).send('Something went wrong in the server.');
     }
     else if(result.rows.length===0){
-    
         res.send('Username Invalid. Try again.');
     }
     else{
@@ -210,12 +207,11 @@ app.get('/ui/main.js', function (req, res) {
 });
 app.get('/ui/main3.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main3.js'));
-
+});
 app.get('/ui/main2.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main2.js'));
 });
 app.get('/articles', function (req, res) {
-    
     pool.query("SELECT * from articles",function(err,result){
     if(err){
         res.status(500).send(err.toString());
@@ -229,14 +225,11 @@ app.get('/articles', function (req, res) {
                 var user;
                 
         if (req.session&&req.session.auth&&req.session.auth.userId)
-            {  
-                pool.query("SELECT name from articles where id=$1",[req.session.auth.userId],function(err,result){
+            {       pool.query("SELECT name from articles where id=$1",[req.session.auth.userId],function(err,result){
                     user=result.rows[0].name;
                 });
             }
-            res.send(f(articleData,user));
-                
-                res.send(temp(articleData,user));
+            res.send(temp(articleData,user));
             }
     }
     });
@@ -301,4 +294,3 @@ var port = 8080; // Use 8080 for local development because you might already hav
 app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
-
