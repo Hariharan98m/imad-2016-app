@@ -239,12 +239,12 @@ app.post('/create-user', function (req, res) {
 });
 
 
-app.post('/login', function (req, res) {
+app.post("/login?username='mani'&password='mani'", function (req, res) {
     //username,password
     //JSON
-    var username=req.body.username;
+    var username=req.params.username;
     
-    var password=req.body.password;
+    var password=req.params.password;
     pool.query('Select * from users where username=',[username],function(err,result){
         if(err){
         res.status(500).send(err.toString());
