@@ -99,7 +99,10 @@ function f(data){
             <input type='text' id='cts' class=special1 placeholder='Comments'>
             <br><br>
             <br>
+            <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'>
             </div>
+            <script type="text/javascript" src="/ui/main.js">
+            </script>    
     </body>
 </html>`;
 return htmltemplate;
@@ -363,7 +366,7 @@ app.get('/:articleName',function(req,res){
     });
 });
 
-
+app.get('/logout')
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
