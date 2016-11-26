@@ -203,22 +203,15 @@ function hash(input,salt){
 
 
 
-app.get('/:input',function(req,res){
-   var input=req.params.input;
-   var salt=crypto.randomBytes(128).toString('hex');
-   res.send(hash(input,salt));
-});
-
-
-
 app.post('/create-user', function (req, res) {
     //username,password
     //JSON
     var username=req.body.username;
-    var password=req.body.password;/*
-    var salt=crypto.randomBytes(128).toString('hex');
-    var dBstring=hash(password,salt);*/
-    pool.query("insert into users(name,password) values($1,$2)",[username,password],function(err,result){
+    var password=req.body.password;
+    
+   var salt=crypto.randomBytes(128).toString('hex');
+   var dBstring=hash(password,salt);
+    pool.query("insert into users(name,password) values($1,$2)",[username,dBstring],function(err,result){
         if(err){
             res.status(500).send(err.toString());
         }
@@ -325,6 +318,14 @@ app.get('/articles', function (req, res) {
     });
 });
 
+
+
+
+app.get('/:input',function(req,res){
+   var input=req.params.input;
+   var salt=crypto.randomBytes(128).toString('hex');
+   res.send(hash(input,salt));
+});
 
 
 /*
