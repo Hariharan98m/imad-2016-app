@@ -333,7 +333,7 @@ app.get('/articles', function (req, res) {
     else
         {
             var articleData=result.rows;
-            res.send(temp(articleData));
+            res.send(temp(articleData,user));
         }
     }
     });
@@ -350,7 +350,15 @@ app.get('/:articleName',function(req,res){
     }
     else
         {   var articleData=result.rows[0];
-            res.send(f(articleData));
+            var user;
+            
+    if (req.session&&req.session.auth&&req.session.auth.userId)
+        {  
+            pool.query("SELECT name from articles where id=$1",[req.session.auth.userId],function(err,result){
+                user=result.rows[0].name;
+            }
+        }
+        res.send(f(articleData,user));
             
         }
     });
