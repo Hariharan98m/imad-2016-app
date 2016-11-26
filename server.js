@@ -18,6 +18,12 @@ var config={
 
 app.use(bodyParser.json());
 var pool=new Pool(config);
+var session=require('express-session');
+
+app.use(session({
+    secret:'someRandomSecretValue',
+    cookie:{maxAge: 1000*60*60*24*30}
+}));
 var usernamesaved='X';
 var articles={
     articleOne:{
@@ -106,7 +112,9 @@ function temp(data){
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
-        list+='<li><a href=/'+title+'>'+title+'</a></li><br>';
+        var date=data[i].date;
+        var d=title+date;
+        list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
     }
     list+='</ul>';
     var htmltemplate=`
@@ -237,8 +245,15 @@ app.post('/login', function (req, res) {
         var dBstring=result.rows[0].password;
         var salt=dBstring.split('$')[2];
         var hashed=hash(password,salt);
-        if (hashed===dBstring)
+        if (hashed===dBstring){
+        //Set the session
+        
+        req.session.auth={userId:result.rows[0].id};
+        
+        
         res.send('Successful check for credentials:'+username);
+        
+        }
         else
         res.send('Password Mismatch. Try again.');
     }
