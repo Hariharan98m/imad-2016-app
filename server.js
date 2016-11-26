@@ -178,7 +178,7 @@ app.get('/submitbtn', function (req, res) {
 var crypto=require('crypto');
 app.get('/test-db',function(req,res){
     //make a request
-    var name='hari1';
+    var name='hari2';
     var pass='value';
     pool.query("insert into users values('"+name+"','"+pass+"')",function(err,result){
         if(err){
