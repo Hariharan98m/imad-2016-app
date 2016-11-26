@@ -91,14 +91,7 @@ function f(data){
         <p><input type='text' id='cts' class=special placeholder='Comments'></p>
         <p><input type='submit' value="Submit" id='subbtn'></p>
         <p id='sc'></p>
-        <p>
-        <a href=/${title} id='refresh'>
-        
-        <a>
-        </p>
         </div>
-        <script type="text/javascript" src="/ui/main.js">
-        </script>
     </body>
 </html>`;
 return htmltemplate;
@@ -321,30 +314,17 @@ app.get('/articles', function (req, res) {
     });
 });
 
-
-
-
-app.get('/:input',function(req,res){
-   var input=req.params.input;
-   var salt=crypto.randomBytes(128).toString('hex');
-   res.send(hash(input,salt));
-});
-
-
-/*
-
 app.get('/:articleName',function(req,res){
     //'article-one'
     pool.query("SELECT * from articles where title=$1",[req.params.articleName],function(err,result){
     if(err){
-        res.status(500).send(err.toString());
+        res.status(500).send('Something went wrong');
     }
     else if(result.rows.length===0){
-        res.status(404).send('Article not found');
+        res.send('Article not found');
     }
     else
-        {
-            var articleData=result.rows[0];
+        {   var articleData=result.rows[0];
             res.send(f(articleData));
             
         }
@@ -352,7 +332,7 @@ app.get('/:articleName',function(req,res){
 });
 
 
-*/
+
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
 app.listen(8080, function () {
   console.log(`IMAD course app listening on port ${port}!`);
