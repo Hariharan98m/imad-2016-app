@@ -9,6 +9,9 @@ sub.onclick=function(){
           if(request.status==200){
               //Capture the response and save it
               var reply=request.responseText;
+              if (reply==='Log in to comment'){
+                  alert(reply);
+              }
               temp=document.getElementById('sc').value;
               temp.innerHTML=reply;
           }
