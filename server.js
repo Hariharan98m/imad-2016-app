@@ -213,7 +213,7 @@ app.post('/create-user', function (req, res) {
    var dBstring=hash(password,salt);
     pool.query("insert into users(name,password) values($1,$2)",[username,dBstring],function(err,result){
         if(err){
-            res.status(500).send(err.toString());
+            res.send('Username already taken. Choose a different one');
         }
         else
         {
@@ -230,11 +230,11 @@ app.post('/login', function (req, res) {
     var password=req.body.password;
     pool.query('Select * from users where name=$1',[username],function(err,result){
     if(err){
-        res.status(500).send('Something went wrong in the ');
+        res.status(500).send('Something went wrong in the server.');
     }
     else if(result.rows.length===0){
     
-        res.send('Username Invalid');
+        res.send('Username Invalid. Try again.');
     }
     else{
         console.log('I m here');
@@ -244,7 +244,7 @@ app.post('/login', function (req, res) {
         if (hashed===dBstring)
         res.send('Successful check for credentials:'+username);
         else
-        res.send('Password Mismatch');
+        res.send('Password Mismatch. Try again.');
     }
     
     });
