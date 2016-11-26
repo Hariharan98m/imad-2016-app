@@ -217,7 +217,7 @@ app.post('/create-user', function (req, res) {
         }
         else
         {
-            res.send('User successfully created');
+            res.send('User successfully created:'+username);
         }
     });
 });
@@ -227,10 +227,9 @@ app.post("/login", function (req, res) {
     //username,password
     //JSON
     var username=req.body.username;
-    
-    var password=req.params.password;
+    var password=req.body.password;
     pool.query('Select * from users where username=',[username],function(err,result){
-        if(err){
+    if(err){
         res.status(500).send(err.toString());
     }
     else if(result.rows.length===0){
@@ -243,11 +242,8 @@ app.post("/login", function (req, res) {
         var hashed=hash(password,salt);
         if (hashed===dBstring)
         res.send('Successful check for credentials:'+username);
-        else{
+        else
         res.send(403).status('Password Mismatch');
-    }
-    
-        
     }
     
     });
