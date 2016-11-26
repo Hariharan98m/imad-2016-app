@@ -204,7 +204,6 @@ app.post('/create-user', function (req, res) {
     //JSON
     var username=req.body.username;
     var password=req.body.password;
-    res.send(username+password);
     var salt=crypto.RandomBytes(512).toString('hex');
     var dBstring=hash(password,salt);
     pool.query("insert into users values('"+username+"','"+password+"')",function(err,result){
