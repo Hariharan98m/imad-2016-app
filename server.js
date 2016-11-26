@@ -230,11 +230,11 @@ app.post('/login', function (req, res) {
     var password=req.body.password;
     pool.query('Select * from users where name=$1',[username],function(err,result){
     if(err){
-        res.status(500).send(err.toString());
+        res.status(500).send('Something went wrong in the ');
     }
     else if(result.rows.length===0){
     
-        res.send(403).status('Username Invalid');
+        res.send('Username Invalid');
     }
     else{
         console.log('I m here');
@@ -244,7 +244,7 @@ app.post('/login', function (req, res) {
         if (hashed===dBstring)
         res.send('Successful check for credentials:'+username);
         else
-        res.send(403).status('Password Mismatch');
+        res.send('Password Mismatch');
     }
     
     });
