@@ -221,25 +221,23 @@ app.get('/articles', function (req, res) {
         res.status(500).send(err.toString());
     }
     else{
-        
-    if(result.rows.length===0){
-        res.send('No articles penned by the author');
-    }
-    else
-        {
-            var articleData=result.rows;
-            var user;
-            
-    if (req.session&&req.session.auth&&req.session.auth.userId)
-        {  
-            pool.query("SELECT name from articles where id=$1",[req.session.auth.userId],function(err,result){
-                user=result.rows[0].name;
+        if(result.rows.length===0){
+            res.send('No articles penned by the author');
+        }
+        else
+            {   var articleData=result.rows;
+                var user;
+                
+        if (req.session&&req.session.auth&&req.session.auth.userId)
+            {  
+                pool.query("SELECT name from articles where id=$1",[req.session.auth.userId],function(err,result){
+                    user=result.rows[0].name;
+                });
             }
-        }
-        res.send(f(articleData,user));
-            
-            res.send(temp(articleData,user));
-        }
+            res.send(f(articleData,user));
+                
+                res.send(temp(articleData,user));
+            }
     }
     });
 });
