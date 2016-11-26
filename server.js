@@ -223,8 +223,8 @@ app.get('/hash/:input',function(req,res){
 app.post("/create-user?username='mani'&password='mani'", function (req, res) {
     //username,password
     //JSON
-    var username=req.params.username;
-    var password=req.params.password;
+    var username=req.query.username;
+    var password=req.query.password;
     var salt=crypto.RandomBytes(128).toString('hex');
     var dBstring=hash(password,salt);
     pool.query("insert into users(name,password) values ($1,$2)",[username,dBstring],function(err,result){
