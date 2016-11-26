@@ -228,6 +228,8 @@ app.post("/login", function (req, res) {
     //JSON
     var username=req.body.username;
     var password=req.body.password;
+    console.log(username);
+    console.log(password);
     pool.query('Select * from users where username=',[username],function(err,result){
     if(err){
         res.status(500).send(err.toString());
@@ -237,6 +239,7 @@ app.post("/login", function (req, res) {
         res.send(403).status('Username Invalid');
     }
     else{
+        console.log('I m here');
         var dBstring=result.rows[0].password;
         var salt=dBstring.split('$')[2];
         var hashed=hash(password,salt);
