@@ -263,7 +263,13 @@ app.post('/login', function (req, res) {
 });
 
 
-
+app.get('/clogin',function(req,res){
+    if (req.session&&req.session.auth&&req.session.auth.userId){
+        res.send('You are logged in:'+req.session.auth.userId);
+    }
+    else
+    res.send('You are not logged in');
+});
 
 
 
