@@ -224,9 +224,8 @@ app.get('/articles', function (req, res) {
         else
             {   var articleData=result.rows;
                 var user;
-                
             if (req.session&&req.session.auth&&req.session.auth.userId)
-            {       pool.query("SELECT name from users where id=$1",[req.session.auth.userId],function(err,result){
+            {   pool.query("SELECT name from users where id=$1",[req.session.auth.userId.toString()],function(err,result){
                     user=result.rows[0].name;
                 });
             }
