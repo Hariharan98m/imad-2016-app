@@ -203,10 +203,7 @@ app.post('/create-user', function (req, res) {
     //JSON
     var username=req.body.username;
     var password=req.body.password;
-    console.log(username);
-    console.log(password);
     res.send(username+password);
-    /*
     var salt=crypto.RandomBytes(128).toString('hex');
     var dBstring=hash(password,salt);
     pool.query("insert into users(name,password) values ($1,$2)",[username,dBstring],function(err,result){
@@ -217,7 +214,7 @@ app.post('/create-user', function (req, res) {
         res.send('User successfully created:'+username);
     }
     
-    });*/
+    });
 });
 
 
