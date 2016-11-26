@@ -220,7 +220,7 @@ app.get('/hash/:input',function(req,res){
 
 
 
-app.post("/create-user?:username/:password", function (req, res) {
+app.post("/create-user/:username/:password", function (req, res) {
     //username,password
     //JSON
     var username=req.params.username;
