@@ -108,12 +108,12 @@ return htmltemplate;
 
 }
 
-function temp(data){
+function temp(data,user){
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
         var date=data[i].date;
-        var d=title+date;
+        var d=title+' '+date;
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
     }
     list+='</ul>';
@@ -125,6 +125,7 @@ function temp(data){
     </head>
     <body>
         <div class=special>
+        <h4>Hi ${user} </h4>
             <div>
                 <a href='/'>Home</a>
             </div>
