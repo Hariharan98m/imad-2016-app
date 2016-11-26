@@ -72,6 +72,7 @@ return htmltemplate;
 }
 
 function temp(data,user){
+    console.log(user);
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
