@@ -1,1 +1,25 @@
+var sub=document.getElementById('subbtn');
+sub.onclick=function(){
+    //Make a request to the server and send the name
+    var request=new XMLHttpRequest();
+    //Capture the response and store it in a variable
+    request.onreadystatechange=function(){
+      if (request.readyState==XMLHttpRequest.DONE){
+          //Take some action
+          if(request.status==200){
+              //Capture the response and save it
+              var reply=request.responseText;
+              temp=document.getElementById('sc').value;
+              temp+=reply;
+              sc.innerHTML=temp;
+          }
+      }  
+      //Not done yet
+    };
+var comment=document.getElementById('cts').value;
+var title=document.getElementById('title').value;
+request.open('GET','http://hariharan98m.imad.hasura-app.io/comment?comment='+comment+'&title='+title, true);
+request.send(null);
+};
+
 
