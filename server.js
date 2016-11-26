@@ -207,14 +207,14 @@ app.post('/create-user', function (req, res) {
     var password=req.body.password;
     var salt=crypto.RandomBytes(512).toString('hex');
     var dBstring=hash(password,salt);
-    pool.query("insert into 'users' values('"+username+"','"+password+"')",function(err,result){
-    if(err){
-        res.status(500).send('Username alredy taken. Choose a different one');
-    }
-    else {
-        res.send('User successfully created:'+username);
-    }
-    
+    pool.query("insert into users values('"+username+"','"+password+"')",function(err,result){
+        if(err){
+            res.status(500).send(err.toString());
+        }
+        else
+        {
+            res.send('User successfully created');
+        }
     });
 });
 
