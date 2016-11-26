@@ -109,6 +109,7 @@ sub.onclick=function(){
     
 
 var username= document.getElementById('name').value;
+alert(username.toString());
 var password=document.getElementById('pw').value;
 request.open('POST','http://hariharan98m.imad.hasura-app.io/create-user', true);
 request.setRequestHeader('Content-Type','application/json');
