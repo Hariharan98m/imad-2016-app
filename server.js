@@ -88,7 +88,7 @@ function temp(data,user){
     </head>
     <body>
         <div class=special>
-        <i> ${user.toString()} </i>
+        <i> ${user} </i>
         <br><br>
             <div>
                 <a href='/'>Home</a>
@@ -220,7 +220,6 @@ app.get('/ui/main2.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main2.js'));
 });
 app.get('/articles', function (req, res) {
-    var user='';
     pool.query("SELECT * from articles",function(err,result){
     if(err){
         res.status(500).send(err.toString());
@@ -231,18 +230,18 @@ app.get('/articles', function (req, res) {
         }
         else
             {   var articleData=result.rows;
-            if (req.session&&req.session.auth&&req.session.auth.userId)
-            {   console.log('Logged in as:'+req.session.auth.userId.toString());
-                pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
-                    user='Hi '+result.rows[0].name;
-                    console.log(user);
-                });
-            }
-            else
-            {
-             user='You are not logged in';   
-            }
-            res.send(temp(articleData,user));
+                var usern='';
+                if (req.session&&req.session.auth&&req.session.auth.userId)
+                {   console.log('Logged in as:'+req.session.auth.userId.toString());
+                    pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
+                        usern='Hi '+result.rows[0].name;
+                    });
+                }
+                else
+                {
+                 usern='You are not logged in';   
+                }
+                res.send(temp(articleData,usern));
             }
     }
     });
