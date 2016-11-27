@@ -72,7 +72,6 @@ return htmltemplate;
 }
 
 function temp(data){
-    console.log(data);
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
@@ -81,7 +80,7 @@ function temp(data){
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
         }
     list+='</ul>';
-    var user=data[datalength-1].user;
+    var user=data[data.length-1].user;
     var htmltemplate=`
  <html>
     <head>
