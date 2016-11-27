@@ -182,12 +182,21 @@ app.post('/login', function (req, res) {
     });
 });
 
+function getuser(){
+    if (req.session&&req.session.auth&&req.session.auth.userId){
+        pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
+        return('Hi'+result.rows[0].name);    
+        });
+    }
+    else
+    return('You are not logged in');
+}
+
 app.get('/clogin',function(req,res){
     if (req.session&&req.session.auth&&req.session.auth.userId){
         pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
         res.send('You are logged in:'+result.rows[0].name);    
         });
-        
     }
     else
     res.send('You are not logged in');
@@ -230,18 +239,8 @@ app.get('/articles', function (req, res) {
         }
         else
             {   var articleData=result.rows;
-                var usern='';
-                if (req.session&&req.session.auth&&req.session.auth.userId)
-                {   console.log('Logged in as:'+req.session.auth.userId.toString());
-                    pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
-                        usern='Hi '+result.rows[0].name;
-                    });
-                }
-                else
-                {
-                 usern='You are not logged in';   
-                }
-                res.send(temp(articleData,usern));
+                
+                res.send(temp(articleData,getuser()));
             }
     }
     });
