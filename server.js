@@ -239,7 +239,7 @@ app.get('/articles', function (req, res) {
                 }
                 else
                 u='You are not logged in';
-                    res.send(temp(articleData,u));
+                res.send(temp(articleData,u));
             }
     }
     });
