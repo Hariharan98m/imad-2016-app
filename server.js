@@ -283,18 +283,19 @@ app.get('/logout',function(req,res){
 app.get('/comment',function(req,res){
     var comment=req.query.comment;
     var title=req.query.title;
-    alert('I m here in the comments page'+comment+' '+title);
+    console.log('I m here in the comments page'+comment+' '+title);
     var user='';
     if (req.session&&req.session.auth&&req.session.auth.userId){
         pool.query("SELECT name from articles where id=$1",[req.session.auth.userId.toString()],function(err,result){
                 user=result.rows[0].name;
-        });
-    pool.query("UPDATE articles set comments=$1 where title=$2",[user+': '+comment+'\n', title],function(err,result){
+        pool.query("UPDATE articles set comments=$1 where title=$2",[user+': '+comment+'\n', title],function(err,result){
         
         pool.query("SELECT comments from articles where title=$1",[title],function(err,result){
             res.send(result.rows[0].comments);
         });
     });
+        });
+    
     }
     else{
         res.send('Log in to comment');
