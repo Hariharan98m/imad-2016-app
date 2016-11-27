@@ -106,7 +106,6 @@ return htmltemplate;
 
 function temp(data){
     var list='<ul>';
-    var user='';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
         var date=data[i].date1;
@@ -114,13 +113,7 @@ function temp(data){
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
         }
     list+='</ul>';
-    if (req.session&&req.session.auth&&req.session.auth.userId){
-        pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
-        user='Hi'+result.rows[0].name;    
-        });
-    }
-    else
-    user='You are not logged in';
+    var user=getuser();
     var htmltemplate=`
  <html>
     <head>
