@@ -233,8 +233,8 @@ app.get('/articles', function (req, res) {
                 var user;
             if (req.session&&req.session.auth&&req.session.auth.userId)
             {   console.log(req.session.auth.userId.toString());
-                pool.query("SELECT name from users where id=$1",[req.session.auth.userId.toString()],function(err,result){
-                    user='Hi '+result.rows[0].name;
+                pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
+                    user='Hi '+result.rows[0].name;          
                 });
             }
             else
