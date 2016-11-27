@@ -220,6 +220,13 @@ app.get('/ui/main3.js', function (req, res) {
 app.get('/ui/main2.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main2.js'));
 });
+
+function pass(name,age){
+    return age;
+}
+app.get('/simple', function (req, res) {
+    res.send(pass('name','age'));
+});
 app.get('/articles', function (req, res) {
     
     pool.query("SELECT * from articles",function(err,result){
