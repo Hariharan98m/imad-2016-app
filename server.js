@@ -104,7 +104,7 @@ function f(data){
 return htmltemplate;
 }
 
-function temp(data){
+function temp(data,user){
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
@@ -113,7 +113,6 @@ function temp(data){
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
         }
     list+='</ul>';
-    var user=getuser();
     var htmltemplate=`
  <html>
     <head>
@@ -188,18 +187,14 @@ app.post('/create-user', function (req, res) {
     });
 });
 
-function getuser(){
+app.get('/clogin',function(req,res){
     if (req.session&&req.session.auth&&req.session.auth.userId){
         pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
-        return('Hi'+result.rows[0].name);    
+        res.send('Hi'+result.rows[0].name);    
         });
     }
     else
-    return('You are not logged in');
-}
-
-app.get('/clogin',function(req,res){
-    res.send(getuser());
+    res.send('You are not logged in');
 });
 
 app.get('/ui/ologo.PNG', function (req, res) {
@@ -225,6 +220,7 @@ app.get('/ui/main2.js', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'main2.js'));
 });
 app.get('/articles', function (req, res) {
+    
     pool.query("SELECT * from articles",function(err,result){
     if(err){
         res.status(500).send(err.toString());
@@ -235,7 +231,15 @@ app.get('/articles', function (req, res) {
         }
         else
             {   var articleData=result.rows;
-                res.send(temp(articleData));
+                var u='';
+                if (req.session&&req.session.auth&&req.session.auth.userId){
+                pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
+                u='Hi'+result.rows[0].name;    
+                });
+                }
+                else
+                u='You are not logged in';
+                    res.send(temp(articleData,u));
             }
     }
     });
