@@ -71,7 +71,7 @@ function f(data){
 return htmltemplate;
 }
 
-function temp(data,user1){
+function temp(data){
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
@@ -80,6 +80,7 @@ function temp(data,user1){
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
         }
     list+='</ul>';
+    var user=data.user;
     var htmltemplate=`
  <html>
     <head>
@@ -88,7 +89,7 @@ function temp(data,user1){
     </head>
     <body>
         <div class=special>
-        <h5> ${user1} </h5>
+        <h5><i> ${user} </i> </h5>
             <div>
                 <a href='/'>Home</a>
             </div>
@@ -239,7 +240,8 @@ app.get('/articles', function (req, res) {
             }
             else
             user='You are not logged in';
-            res.send(temp(articleData,user));
+            articleData[user]=user;
+            res.send(temp(articleData));
             }
     }
     });
