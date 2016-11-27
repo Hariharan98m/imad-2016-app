@@ -199,13 +199,7 @@ function getuser(){
 }
 
 app.get('/clogin',function(req,res){
-    if (req.session&&req.session.auth&&req.session.auth.userId){
-        pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
-        res.send('You are logged in:'+result.rows[0].name);    
-        });
-    }
-    else
-    res.send('You are not logged in');
+    res.send(getuser());
 });
 
 app.get('/ui/ologo.PNG', function (req, res) {
