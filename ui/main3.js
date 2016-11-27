@@ -19,7 +19,7 @@ sub.onclick=function(){
       //Not done yet
     };
 var comment=document.getElementById('cts').value;
-var title=document.getElementById('tit').value;
+var title=document.getElementById('tit').value.split(' ')[2];
 request.open('GET','http://hariharan98m.imad.hasura-app.io/comment?comment='+comment+'&title='+title, true);
 request.send(null);
 };
