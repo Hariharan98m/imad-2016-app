@@ -74,7 +74,7 @@ function f(data){
         </title>
         <div class=special>
             <div>
-                <a href='/articles'>Back to Articles</a><div id=tit>${title}<div>
+                <a href='/articles'>Back to Articles</a>
             </div>
             <hr/>
             <h1>
@@ -91,7 +91,7 @@ function f(data){
             <br><br>
             <br>
             <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'>
-            <h5>Comments:</h5>
+        <div>Comments on ${title}:</div>
             <p id='sc'>
             ${comments}
             </p>
