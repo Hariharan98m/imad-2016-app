@@ -24,6 +24,7 @@ app.use(session({
 }));
 var crypto=require('crypto');
 function f(data){
+    console.log(data);
     var title=data.title;
     var heading=data.heading;
     var date=data.date;
