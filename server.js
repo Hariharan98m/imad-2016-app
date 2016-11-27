@@ -65,8 +65,10 @@ function f(data){
  var htmltemplate=`
  <html>
     <head>
-        <title id=title>
+        <title>
+        <div id=tit>
             ${title}
+        </div>
         </title>
     <link href="/ui/style.css" rel="stylesheet" />
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
