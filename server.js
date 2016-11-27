@@ -23,6 +23,38 @@ app.use(session({
     cookie:{maxAge: 1000*60*60*24*30}
 }));
 var crypto=require('crypto');
+
+
+app.post('/login', function (req, res) {
+    //username,password
+    //JSON
+    var username=req.body.username;
+    var password=req.body.password;
+    pool.query('Select * from users where name=$1',[username],function(err,result){
+    if(err){
+        res.status(500).send('Something went wrong in the server.');
+    }
+    else if(result.rows.length===0){
+        res.send('Username Invalid. Try again.');
+    }
+    else{
+        console.log('I m here');
+        var dBstring=result.rows[0].password;
+        var salt=dBstring.split('$')[2];
+        var hashed=hash(password,salt);
+        if (hashed===dBstring){
+        //Set the session
+        req.session.auth={userId:result.rows[0].id};
+        res.send('Successful check for credentials:'+username);
+        }
+        else
+        res.send('Password Mismatch. Try again.');
+    }
+    });
+});
+
+
+
 function f(data){
     console.log(data);
     var title=data.title;
@@ -160,34 +192,6 @@ app.post('/create-user', function (req, res) {
         {
             res.send('User successfully created:'+username);
         }
-    });
-});
-
-app.post('/login', function (req, res) {
-    //username,password
-    //JSON
-    var username=req.body.username;
-    var password=req.body.password;
-    pool.query('Select * from users where name=$1',[username],function(err,result){
-    if(err){
-        res.status(500).send('Something went wrong in the server.');
-    }
-    else if(result.rows.length===0){
-        res.send('Username Invalid. Try again.');
-    }
-    else{
-        console.log('I m here');
-        var dBstring=result.rows[0].password;
-        var salt=dBstring.split('$')[2];
-        var hashed=hash(password,salt);
-        if (hashed===dBstring){
-        //Set the session
-        req.session.auth={userId:result.rows[0].id};
-        res.send('Successful check for credentials:'+username);
-        }
-        else
-        res.send('Password Mismatch. Try again.');
-    }
     });
 });
 
