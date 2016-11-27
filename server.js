@@ -87,10 +87,6 @@ function f(data){
         </div>
         
         <div style='margin:100px'>
-            <input type='text' id='cts' class=special1 placeholder='Comment box'>
-            <br><br>
-            <br>
-            <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'>
             <h5>Comments:</h5>
             <p id='sc'>
             ${comments}
@@ -123,7 +119,7 @@ function temp(data,user){
     <body>
         <div class=special>
             <i> ${user} </i>
-            <br><br><br>
+            <br><br>
             <div>
                 <a href='/'>Home</a>
             </div>
