@@ -184,11 +184,18 @@ app.post('/login', function (req, res) {
 
 app.get('/clogin',function(req,res){
     if (req.session&&req.session.auth&&req.session.auth.userId){
-        res.send('You are logged in:'+req.session.auth.userId);
+        pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
+        res.send('You are logged in:'+result.rows[0].name);    
+        });
+        
     }
     else
     res.send('You are not logged in');
 });
+
+
+
+
 
 app.get('/ui/ologo.PNG', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'ologo.PNG'));
