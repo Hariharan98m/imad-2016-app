@@ -70,13 +70,11 @@ function f(data){
     </head>
     <body>
         <title>
-        <div id=tit>
             ${title}
-        </div>
         </title>
         <div class=special>
             <div>
-                <a href='/articles'>Back to Articles</a>
+                <a href='/articles'>Back to Articles</a><div id=tit>${title}<div>
             </div>
             <hr/>
             <h1>
