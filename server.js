@@ -81,7 +81,7 @@ function temp(data){
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
         }
     list+='</ul>';
-    var user=data.user;
+    var user=data[datalength-1].user;
     var htmltemplate=`
  <html>
     <head>
@@ -90,7 +90,7 @@ function temp(data){
     </head>
     <body>
         <div class=special>
-        <h5><i> ${user} </i> </h5>
+        <i> ${user} </i>
             <div>
                 <a href='/'>Home</a>
             </div>
@@ -241,7 +241,8 @@ app.get('/articles', function (req, res) {
             }
             else
             user='You are not logged in';
-            articleData[user]=user;
+            var element={'user':user};
+            articleData.push(element);
             res.send(temp(articleData));
             }
     }
