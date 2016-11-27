@@ -87,6 +87,10 @@ function f(data){
         </div>
         
         <div style='margin:100px'>
+        <input type='text' id='cts' class=special1 placeholder='Comment box'>
+            <br><br>
+            <br>
+            <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'>
             <h5>Comments:</h5>
             <p id='sc'>
             ${comments}
@@ -107,7 +111,7 @@ function temp(data,user){
         var title=data[i].title;
         var date=data[i].date1;
         var d=title+' ('+date+')';
-        list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
+        list+='<li><a href=/'+title+'>'+d+'</a></li><br>';
         }
     list+='</ul>';
     var htmltemplate=`
@@ -121,7 +125,7 @@ function temp(data,user){
             <i> ${user} </i>
             <br><br>
             <div>
-                <a href='/'>Home</a>
+                <a href='/logout'>Logout</a>
             </div>
             <hr/>
             <h3>
