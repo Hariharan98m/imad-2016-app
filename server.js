@@ -244,13 +244,15 @@ app.get('/articles', function (req, res) {
                 if (req.session&&req.session.auth&&req.session.auth.userId){
                 pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
                 u='Hi '+result.rows[0].name.toString();
-                console.log(u);
+                res.send(temp(articleData,u));
                 });
                 }
                 else
-                {u='You are not logged in';}
-                console.log(u);
+                {u='You are not logged in';
                 res.send(temp(articleData,u));
+                }
+                console.log(u);
+                
             }
     }
     });
