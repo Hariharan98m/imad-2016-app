@@ -65,15 +65,15 @@ function f(data){
  var htmltemplate=`
  <html>
     <head>
+    <link href="/ui/style.css" rel="stylesheet" />
+    <meta name='viewport' content='width=device-width, initial-scale=1'/>
+    </head>
+    <body>
         <title>
         <div id=tit>
             ${title}
         </div>
         </title>
-    <link href="/ui/style.css" rel="stylesheet" />
-    <meta name='viewport' content='width=device-width, initial-scale=1'/>
-    </head>
-    <body>
         <div class=special>
             <div>
                 <a href='/articles'>Back to Articles</a>
