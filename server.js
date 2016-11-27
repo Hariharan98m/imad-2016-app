@@ -225,7 +225,8 @@ function pass(name,age){
     return age;
 }
 app.get('/simple', function (req, res) {
-    res.send(pass('name','age'));
+    var name='Hari';
+    res.send(pass({'name':name},'age'));
 });
 app.get('/articles', function (req, res) {
     
