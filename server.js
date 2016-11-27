@@ -234,7 +234,7 @@ app.get('/articles', function (req, res) {
                 var u='';
                 if (req.session&&req.session.auth&&req.session.auth.userId){
                 pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
-                u='Hi '+result.rows[0].name;
+                u='Hi '+result.rows[0].name.toString();
                 console.log(u);
                 });
                 }
