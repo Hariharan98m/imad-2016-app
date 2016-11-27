@@ -91,6 +91,7 @@ function f(data){
             <br><br>
             <br>
             <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'>
+            <br><br>
         <div>Comments on ${title}:</div>
             <p id='sc'>
             ${comments}
