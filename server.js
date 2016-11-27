@@ -202,10 +202,6 @@ app.get('/clogin',function(req,res){
     res.send('You are not logged in');
 });
 
-
-
-
-
 app.get('/ui/ologo.PNG', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'ologo.PNG'));
 });
