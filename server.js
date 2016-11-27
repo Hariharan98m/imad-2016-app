@@ -89,7 +89,7 @@ function temp(data,user){
     </head>
     <body>
         <div class=special>
-        <h4> ${user1} </h4>
+        <h5> ${user1} </h5>
             <div>
                 <a href='/'>Home</a>
             </div>
