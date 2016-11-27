@@ -88,10 +88,8 @@ function temp(data,user){
     </head>
     <body>
         <div class=special>
-        <i> ${user} </i>
-        <br><br>
             <div>
-                <a href='/'>Home</a>
+                <a href='/logout'>Logout</a>
             </div>
             <hr/>
             <h3>
@@ -235,8 +233,7 @@ app.get('/articles', function (req, res) {
         }
         else
             {   var articleData=result.rows;
-                
-                res.send(temp(articleData,getuser()));
+                res.send(temp(articleData));
             }
     }
     });
