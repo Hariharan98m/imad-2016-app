@@ -71,7 +71,7 @@ function f(data){
 return htmltemplate;
 }
 
-function temp(data,user){
+function temp(data,user1){
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
@@ -80,7 +80,6 @@ function temp(data,user){
         list+='<li><a href=/'+d+'>'+d+'</a></li><br>';
         }
     list+='</ul>';
-    var user1=user;
     var htmltemplate=`
  <html>
     <head>
