@@ -72,6 +72,7 @@ return htmltemplate;
 }
 
 function temp(data,user){
+    console.log(user);
     var list='<ul>';
     for (var i=0;i<data.length;i++){
         var title=data[i].title;
@@ -239,7 +240,9 @@ app.get('/articles', function (req, res) {
                 });
             }
             else
-            {user='You are not logged in';}
+            {
+             user='You are not logged in';   
+            }
             res.send(temp(articleData,user));
             }
     }
