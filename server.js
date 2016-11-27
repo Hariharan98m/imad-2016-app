@@ -283,6 +283,7 @@ app.get('/logout',function(req,res){
 app.get('/comment',function(req,res){
     var comment=req.query.comment;
     var title=req.query.title;
+    alert('I m here in the comments page'+comment+' '+title);
     var user='';
     if (req.session&&req.session.auth&&req.session.auth.userId){
         pool.query("SELECT name from articles where id=$1",[req.session.auth.userId.toString()],function(err,result){
