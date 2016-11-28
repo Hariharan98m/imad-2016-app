@@ -25,6 +25,20 @@ app.use(session({
 var crypto=require('crypto');
 
 
+function k(){
+    var ht=`
+    <html>
+    <body>
+    <div id=open>Open</div>
+    </body>
+    </html>`
+    return ht;
+}
+
+
+
+
+
 app.post('/login', function (req, res) {
     //username,password
     //JSON
@@ -63,6 +77,7 @@ function f(data){
     var content=data.content;
     var comments=data.comments;
  var htmltemplate=`
+ <!doctype html>
  <html>
       <head>
           <title>
