@@ -24,19 +24,6 @@ app.use(session({
 }));
 var crypto=require('crypto');
 
-
-function k(){
-    var ht=`
-    <html>
-    <body>
-    <div id=open>Open</div>
-    <script type="text/javascript" src="/ui/main3.js"></script>
-    </body>
-    </html>`;
-    return ht;
-}
-
-
 app.post('/login', function (req, res) {
     //username,password
     //JSON
@@ -74,9 +61,7 @@ function f(data){
     var date=data.date;
     var content=data.content;
     var comments=data.comments;
- var htmltemplate=`
- <!doctype html>
- <html>
+ var htmltemplate=`<html>
       <head>
           <title>
               ${title}
@@ -87,12 +72,12 @@ function f(data){
       <body>
           <div class="special">
               <div>
-                  <a href="/articles">Back to articles</a>
+                  <a href="/">Home</a>
               </div>
               <hr/>
-              <h1>
+              <h3>
                   ${heading}
-              </h1>
+              </h3>
               <div>
                   ${date.toDateString()}
               </div>
@@ -100,26 +85,18 @@ function f(data){
                 ${content}
               </div>
               <hr/>
-            </div>
-              <div style='margin:100px'>
-        
-                  <input type='text' id='cts' class=special1 placeholder='Comment box'/><br><br>
-                  <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'/><br><br>
-                  <div id='com'>Comments on ${title}:</div>
-                  <div id="comments">
-                  This is a comment
-                  ${comments}
-                  </div>
-              
+              <h5>Comments</h5>
+              <div id="comment_form">   
+              ${comments}
               </div>
-          <script type="text/javascript" src="/ui/main3.js"></script>
+              <input type='text' placeholder='Comment-box' id='commentbox'/>
+              <input type='submit' placeholder='Submit' id='subbtn'/>
+          </div>
+          <script type="text/javascript" src="/ui/main.js"></script>
       </body>
     </html>
-`;
- 
- 
- 
-return htmltemplate;
+    `;
+    return htmlTemplate;
 }
 
 app.get('/call',function(req,res){
