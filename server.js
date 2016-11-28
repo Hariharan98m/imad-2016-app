@@ -94,9 +94,8 @@ function f(data){
           </div>
           <script type="text/javascript" src="/ui/main.js"></script>
       </body>
-    </html>
-`;
-    return htmlTemplate;
+    </html>`;
+    return htmltemplate;
 }
 
 app.get('/call',function(req,res){
