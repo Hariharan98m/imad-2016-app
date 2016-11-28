@@ -223,18 +223,10 @@ function pass(name,age){
     return age;
 }
 app.get('/simple', function (req, res) {
-    pool.query("update articles set comments='this is a new comment' where title='article-one'",function(err,result){
-    if (err){
-        res.send('error');
-    }
-    else{
         pool.query("select comments from articles where title='article-one'",function(err,result){
     
     res.send(result.rows[0].comments);
-    });}
-    
     });
-        
     });
 app.get('/articles', function (req, res) {
     
