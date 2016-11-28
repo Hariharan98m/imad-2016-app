@@ -73,7 +73,7 @@ function f(data){
     </head>
     
     <body>
-    
+    <div id='me'>Call</div>
         <div class=special>
             <div>
                 <a href='/articles'>Back to Articles</a>
@@ -99,7 +99,7 @@ function f(data){
             </div>
             <br>
         </div>
-        <div id='me'>Call</div>
+        
             <script type="text/javascript" src="/ui/main3.js">
             </script>    
     </body>
