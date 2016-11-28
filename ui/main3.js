@@ -23,7 +23,7 @@
         */
         // Make the request
         var comment = document.getElementById('commentbox').value;
-        var text = $('#comment_form').text();
+        var text = document.getElementById('comment_form').innerHTML;
         console.log(comment);
         console.log(text);
     };
