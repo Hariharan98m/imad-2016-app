@@ -64,47 +64,47 @@ function f(data){
     var comments=data.comments;
  var htmltemplate=`
  <html>
-    <head>
-        <title id=tit>
-            ${title}
-        </title>
-    <link href="/ui/style.css" rel="stylesheet" />
-    <meta name='viewport' content='width=device-width, initial-scale=1'/>
-    </head>
-    
-    <body>
-    <div id='me'>Call</div>
-        <div class=special>
-            <div>
-                <a href='/articles'>Back to Articles</a>
-            </div>
-            <hr/>
-            <h1>
-                ${heading}
-            </h1>
-            <div>
-                ${date.toDateString()}
-            </div>
+      <head>
+          <title>
+              ${title}
+          </title>
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link href="/ui/style.css" rel="stylesheet" />
+      </head> 
+      <body>
+          <div class="special">
+              <div>
+                  <a href="/articles">Back to articles</a>
+              </div>
+              <hr/>
+              <h1>
+                  ${heading}
+              </h1>
+              <div>
+                  ${date.toDateString()}
+              </div>
+              <div>
                 ${content}
-        </div>
+              </div>
+              <hr/>
+              <div style='margin:100px'>
         
-        <div style='margin:100px'>
-        <input type='text' id='cts' class=special1 placeholder='Comment box'/>
-            <br><br>
-            <br>
-        <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'/>
-            <br><br>
-        <div id='c'>Comments:</div>
-            <div id='sc'>
-            ${comments}
-            </div>
-        <br>
-        </div>
-        
-            <script type="text/javascript" src="/ui/main3.js">
-            </script>    
-    </body>
-</html>`;
+                  <input type='text' id='cts' class=special1 placeholder='Comment box'/><br><br>
+                  <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'/><br><br>
+                  <h5>Comments:</h5>
+                  <div id="comments">
+                  ${comments}
+                  </div>
+              
+              </div>
+          </div>
+          <script type="text/javascript" src="/ui/article.js"></script>
+      </body>
+    </html>
+`;
+ 
+ 
+ 
 return htmltemplate;
 }
 
