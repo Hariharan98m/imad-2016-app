@@ -224,7 +224,15 @@ function pass(name,age){
 }
 app.get('/simple', function (req, res) {
     pool.query("update articles set comments='this is a new comment' where title='article-one'",function(err,result){
+    if (err){
+        res.send('error');
+    }
+    else{
+        pool.query("update articles set comments='this is a new comment' where title='article-one'",function(err,result){
+    
     res.send(result.rows);
+    });}
+    
     });
         
     });
