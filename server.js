@@ -85,7 +85,6 @@ function f(data){
             </div>
                 ${content}
         </div>
-        
         <div style='margin:100px'>
         <input type='text' id='cts' class=special1 placeholder='Comment box'>
             <br><br>
