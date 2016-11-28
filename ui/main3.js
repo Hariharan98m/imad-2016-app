@@ -24,6 +24,7 @@
         // Make the request
         var comment = document.getElementById('commentbox').value;
         var form = document.getElementById('comment_form').value;
+        form.innerHTML='I ve changed the comment';
         console.log(comment);
         console.log(form);
     };
