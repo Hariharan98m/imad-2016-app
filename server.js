@@ -92,7 +92,7 @@ function f(data){
               <input type='text' placeholder='Comment-box' id='commentbox'/>
               <input type='submit' placeholder='Submit' id='subbtn'/>
           </div>
-          <script type="text/javascript" src="/ui/main.js"></script>
+          <script type="text/javascript" src="/ui/main3.js"></script>
       </body>
     </html>`;
     return htmltemplate;
