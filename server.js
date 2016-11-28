@@ -309,7 +309,9 @@ app.get('/:articleName',function(req,res){
         res.send('Article not found');
     }
     else
-        {   var articleData=result.rows[0];
+        {   
+            var articleData=result.rows[0];
+            console.log(articleData);
             res.send(f(articleData));
         }
     });
