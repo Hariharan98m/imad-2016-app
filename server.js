@@ -95,7 +95,7 @@ function f(data){
           <script type="text/javascript" src="/ui/main.js"></script>
       </body>
     </html>
-    `;
+`;
     return htmlTemplate;
 }
 
