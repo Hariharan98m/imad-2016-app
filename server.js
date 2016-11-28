@@ -228,7 +228,7 @@ app.get('/simple', function (req, res) {
         res.send('error');
     }
     else{
-        pool.query("update articles set comments='this is a new comment' where title='article-one'",function(err,result){
+        pool.query("select * from articles",function(err,result){
     
     res.send(result.rows);
     });}
