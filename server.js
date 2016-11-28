@@ -65,13 +65,14 @@ function f(data){
  var htmltemplate=`
  <html>
     <head>
-        <title id='tit'>
+        <title id=tit>
             ${title}
         </title>
     <link href="/ui/style.css" rel="stylesheet" />
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     </head>
     <body>
+    <div id=me>Call</div>
         <div class=special>
             <div>
                 <a href='/articles'>Back to Articles</a>
@@ -91,7 +92,7 @@ function f(data){
             <br>
             <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'/>
             <br><br>
-        <div id=tit>Comments on ${title}:</div>
+        <div>Comments:</div>
             <div id='sc'>
             ${comments}
             </div>
