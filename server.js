@@ -72,12 +72,12 @@ function f(data){
       <body>
           <div class="special">
               <div>
-                  <a href="/">Home</a>
+                  <a href="/articles">Back to Articles</a>
               </div>
               <hr/>
-              <h3>
+              <h2>
                   ${heading}
-              </h3>
+              </h2>
               <div>
                   ${date.toDateString()}
               </div>
@@ -85,12 +85,13 @@ function f(data){
                 ${content}
               </div>
               <hr/>
+              <input type='text' placeholder='Comment-box' id='commentbox' style="width:350px;height:75px;font-family:calibri;"/>
+              <input type='submit' placeholder='Submit' id='subbtn' style="font-family:calibri;"/>
               <h5>Comments</h5>
               <div id="comment_form">   
               ${comments}
               </div>
-              <input type='text' placeholder='Comment-box' id='commentbox'/>
-              <input type='submit' placeholder='Submit' id='subbtn'/>
+              
           </div>
           <script type="text/javascript" src="/ui/main3.js"></script>
       </body>
@@ -277,20 +278,19 @@ app.get('/logout',function(req,res){
     delete req.session.auth;
     res.send(lout());
 });
-app.get('/comment',function(req,res){
-    var comment=req.query.comment;
-    var title=req.query.title;
+app.post('/comment',function(req,res){
+    var comment=req.body.comment;
+    var title=req.body.title;
     console.log('I m here in the comments page'+comment+' '+title);
-    var user='';
     if (req.session&&req.session.auth&&req.session.auth.userId){
         pool.query("SELECT name from articles where id=$1",[req.session.auth.userId.toString()],function(err,result){
-                user=result.rows[0].name;
+                var user=result.rows[0].name;
         pool.query("UPDATE articles set comments=$1 where title=$2",[user+': '+comment+'\n', title],function(err,result){
         
         pool.query("SELECT comments from articles where title=$1",[title],function(err,result){
             res.send(result.rows[0].comments);
         });
-    });
+        });
         });
     
     }
