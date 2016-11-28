@@ -3,9 +3,9 @@
     var submit = document.getElementById('subbtn');
     submit.onclick = function () {
         // Create a request object
-        /*
-        var request = new XMLHttpRequest();
         
+        var request = new XMLHttpRequest();
+        /*
         // Capture the response and store it in a variable
         request.onreadystatechange = function () {
           if (request.readyState === XMLHttpRequest.DONE) {
@@ -23,7 +23,7 @@
         */
         // Make the request
         var comment = document.getElementById('commentbox').value;
-        var text = document.getElementById('comment_form').innerHTML;
+        var text = document.getElementById('tit').innerHTML;
         console.log(comment);
         console.log(text);
     };
