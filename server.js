@@ -30,13 +30,11 @@ function k(){
     <html>
     <body>
     <div id=open>Open</div>
+    <script type="text/javascript" src="/ui/main3.js"></script>
     </body>
-    </html>`
+    </html>`;
     return ht;
 }
-
-
-
 
 
 app.post('/login', function (req, res) {
@@ -107,8 +105,9 @@ function f(data){
         
                   <input type='text' id='cts' class=special1 placeholder='Comment box'/><br><br>
                   <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'/><br><br>
-                  <div id=com>Comments on ${title}:</div>
+                  <div id='com'>Comments on ${title}:</div>
                   <div id="comments">
+                  This is a comment
                   ${comments}
                   </div>
               
