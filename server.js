@@ -86,10 +86,10 @@ function f(data){
                 ${content}
         </div>
         <div style='margin:100px'>
-        <input type='text' id='cts' class=special1 placeholder='Comment box'>
+        <input type='text' id='cts' class=special1 placeholder='Comment box'/>
             <br><br>
             <br>
-            <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'>
+            <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'/>
             <br><br>
         <div id='tit'>Comments on ${title}:</div>
             <div id='sc'>
