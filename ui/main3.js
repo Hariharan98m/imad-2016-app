@@ -18,9 +18,10 @@ sub.onclick=function(){
       }  
       //Not done yet
     };
+var com=document.getElementById('com').value;
 var comment=document.getElementById('cts').value;
 console.log(comment);
-var com=document.getElementById('com').value;
+
 console.log(com);
 request.open('GET','http://hariharan98m.imad.hasura-app.io/call', true);
 request.send(null);
