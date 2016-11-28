@@ -20,8 +20,8 @@ sub.onclick=function(){
     };
 var comment=document.getElementById('comments').value;
 console.log(comment);
-var title=document.getElementById('me').value;
-console.log(title);
+var com=document.getElementById('com').value;
+console.log(com);
 request.open('GET','http://hariharan98m.imad.hasura-app.io/call', true);
 request.send(null);
 };
