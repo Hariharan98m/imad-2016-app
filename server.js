@@ -80,7 +80,7 @@ function f(data){
               <h1>
                   ${heading}
               </h1>
-              <div>
+              <div id='date'>
                   ${date.toDateString()}
               </div>
               <div>
