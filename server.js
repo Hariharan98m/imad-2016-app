@@ -223,9 +223,11 @@ function pass(name,age){
     return age;
 }
 app.get('/simple', function (req, res) {
-    var name='Hari';
-    res.send(pass({'name':name},'age'));
-});
+    pool.query("SELECT * from articles",function(err,result){
+    res.send(result.rows);
+    });
+        
+    });
 app.get('/articles', function (req, res) {
     
     pool.query("SELECT * from articles",function(err,result){
