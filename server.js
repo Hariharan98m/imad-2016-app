@@ -287,7 +287,9 @@ app.post('/comment',function(req,res){
         pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
                 var user=result.rows[0].name.toString();
         pool.query("UPDATE articles set comments='"+user+': '+comment+'\n'+"' where title='"+title+"'",function(err,result){
+        console.log(result.rows);
         pool.query("SELECT comments from articles where title='"+title+"'",function(err,result){
+            console.log(result.rows);
             res.send(result.rows[0].comments);
         });
         });
