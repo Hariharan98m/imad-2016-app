@@ -296,6 +296,8 @@ app.post('/comment',function(req,res){
     if (req.session&&req.session.auth&&req.session.auth.userId){
         console.log('cookie set');
         pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
+            var user=result.rows[0].name;
+            console.log(user);
         pool.query("update articles set comments=$1 where title=$2",[user+': '+comment+'\n',title],function(err,result){
         pool.query("SELECT * from articles where title=$1",[title],function(err,result){
             console.log(result.rows);
