@@ -292,12 +292,12 @@ app.post('/comment',function(req,res){
                     user=result.rows[0].name;
                     console.log(user);
                 });
-                pool.query("update articles set comments=$1 where title=$2",[user+': '+comment+'\n',title],function(err,result){
+                pool.query("update articles set comments='i did it' where title='article-one'",function(err,result){
                     if(err){
                         res.send(error);
                     }
                     else{
-                    pool.query("select comments from articles where title=$1",[title],function(err,result){
+                    pool.query("select comments from articles where title='article-one'",function(err,result){
                     console.log(result.rows[0].comments);
                     res.send(result.rows[0].comments);
                     });
