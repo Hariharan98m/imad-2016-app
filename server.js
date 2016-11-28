@@ -78,7 +78,7 @@ function f(data){
             </div>
             <hr/>
             <h1>
-                ${heading}
+                <div id='head'>${heading}</div>
             </h1>
             <div>
                 ${date.toDateString()}
@@ -104,6 +104,9 @@ function f(data){
 return htmltemplate;
 }
 
+app.get('/call',function(req,res){
+    res.send('Success');
+});
 function temp(data,user){
     console.log('in temp u:'+user);
     var list='<ul>';
