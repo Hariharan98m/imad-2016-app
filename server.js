@@ -292,7 +292,7 @@ app.post('/comment',function(req,res){
                     user=result.rows[0].name;
                     console.log(user);
                 });
-                pool.query("update articles set comments='i did it' where title='article-one'",function(err,result){
+                pool.query("update articles set comments+='its cool' where title='article-one'",function(err,result){
                     if(err){
                         res.send(error);
                     }
