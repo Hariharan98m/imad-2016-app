@@ -116,9 +116,6 @@ sub.onclick=function(){
       }  
       //Not done yet
     };
-    
-var c= (document.getElementsByTagName('title').value)[0];
-console.log(c);
 var username= document.getElementById('name').value;
 var password=document.getElementById('pw').value;
 request.open('POST','http://hariharan98m.imad.hasura-app.io/login', true);
