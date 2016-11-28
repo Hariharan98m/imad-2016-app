@@ -284,11 +284,13 @@ app.post('/comment',function(req,res){
     
     console.log('I m here in the comments page'+comment+' '+title);
     if (req.session&&req.session.auth&&req.session.auth.userId){
+        console.log('cookie set');
         pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
                 var user=result.rows[0].name.toString();
+                console.log(user);
         pool.query("UPDATE articles set comments='"+user+': '+comment+'\n'+"' where title='"+title+"'",function(err,result){
-        console.log(result.rows);
-        pool.query("SELECT comments from articles where title='"+title+"'",function(err,result){
+        console.log(result);
+        pool.query("SELECT * from articles where title='"+title+"'",function(err,result){
             console.log(result.rows);
             res.send(result.rows[0].comments);
         });
