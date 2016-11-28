@@ -228,7 +228,7 @@ app.get('/simple', function (req, res) {
         res.send('error');
     }
     else{
-        pool.query("select * from articles",function(err,result){
+        pool.query("select comments from articles where title='article-one",function(err,result){
     
     res.send(result.rows);
     });}
@@ -298,8 +298,7 @@ app.post('/comment',function(req,res){
         pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
                 var user=result.rows[0].name.toString();
                 console.log(user);
-        pool.query("UPDATE articles set comments='"+user+': '+comment+'\n'+"' where title='"+title+"'",function(err,result){
-        console.log(result);
+        pool.query("update articles set comments=$1 where title=$2",[user+': '+comment+'\n',title],function(err,result){
         pool.query("SELECT * from articles where title='"+title+"'",function(err,result){
             console.log(result.rows);
             res.send(result.rows[0].comments);
