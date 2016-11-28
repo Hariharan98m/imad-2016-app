@@ -223,7 +223,7 @@ function pass(name,age){
     return age;
 }
 app.get('/simple', function (req, res) {
-    pool.query("SELECT * from articles",function(err,result){
+    pool.query("update articles set comments='this is a new comment' wheree title='article-one'",function(err,result){
     res.send(result.rows);
     });
         
