@@ -87,6 +87,7 @@ function f(data){
             </div>
                 ${content}
         </div>
+        
         <div style='margin:100px'>
         <input type='text' id='cts' class=special1 placeholder='Comment box'/>
             <br><br>
@@ -97,7 +98,7 @@ function f(data){
             <div id='sc'>
             ${comments}
             </div>
-            <br>
+        <br>
         </div>
         
             <script type="text/javascript" src="/ui/main3.js">
