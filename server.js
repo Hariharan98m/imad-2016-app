@@ -71,8 +71,9 @@ function f(data){
     <link href="/ui/style.css" rel="stylesheet" />
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     </head>
+    
     <body>
-    <div id='me'>Call</div>
+    
         <div class=special>
             <div>
                 <a href='/articles'>Back to Articles</a>
@@ -90,7 +91,7 @@ function f(data){
         <input type='text' id='cts' class=special1 placeholder='Comment box'/>
             <br><br>
             <br>
-            <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'/>
+        <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'/>
             <br><br>
         <div>Comments:</div>
             <div id='sc'>
@@ -98,6 +99,7 @@ function f(data){
             </div>
             <br>
         </div>
+        <div id='me'>Call</div>
             <script type="text/javascript" src="/ui/main3.js">
             </script>    
     </body>
