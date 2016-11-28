@@ -63,7 +63,7 @@ function f(data){
     var comments=data.comments;
  var htmltemplate=`<html>
       <head>
-          <title>
+          <title id=tit>
               ${title}
           </title>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
