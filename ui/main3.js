@@ -19,7 +19,7 @@ sub.onclick=function(){
       //Not done yet
     };
 var comment=document.getElementById('cts').value;
-var title=document.getElementById('call').value;
+var title=document.getElementById('me').value;
 console.log(title);
 request.open('GET','http://hariharan98m.imad.hasura-app.io/call', true);
 request.send(null);
