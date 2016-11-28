@@ -19,9 +19,9 @@ sub.onclick=function(){
       //Not done yet
     };
 var comment=document.getElementById('cts').value;
-var title=document.getElementById('tit').value;
+var title=document.getElementById('head').value;
 console.log(title);
-request.open('GET','http://hariharan98m.imad.hasura-app.io/comment?comment='+comment+'&title='+title, true);
+request.open('GET','http://hariharan98m.imad.hasura-app.io/call', true);
 request.send(null);
 };
 
