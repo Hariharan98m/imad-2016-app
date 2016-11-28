@@ -80,7 +80,7 @@ function f(data){
               <h1>
                   ${heading}
               </h1>
-              <div id='date'>
+              <div>
                   ${date.toDateString()}
               </div>
               <div>
@@ -91,7 +91,7 @@ function f(data){
         
                   <input type='text' id='cts' class=special1 placeholder='Comment box'/><br><br>
                   <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'/><br><br>
-                  <h5>Comments:</h5>
+                  <div id=com>Comments on ${title}:</div>
                   <div id="comments">
                   ${comments}
                   </div>
