@@ -30,6 +30,6 @@
         var title = document.getElementById('tit').innerHTML;
         request.open('POST', '/comment', true);
         request.setRequestHeader('Content-Type', 'application/json');
-        request.send(JSON.stringify({comment: comment,title:title}));  
+        request.send(JSON.stringify({'comment': comment,'title':title}));  
         submit.value = 'Submitting...';
     };
