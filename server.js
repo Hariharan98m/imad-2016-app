@@ -78,7 +78,7 @@ function f(data){
             </div>
             <hr/>
             <h1>
-                <div id='head'>${heading}</div>
+                ${heading}
             </h1>
             <div>
                 ${date.toDateString()}
@@ -91,10 +91,10 @@ function f(data){
             <br>
             <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'>
             <br><br>
-        <div>Comments:</div>
-            <p id='sc'>
+        <div id='tit'>Comments on ${title}:</div>
+            <div id='sc'>
             ${comments}
-            </p>
+            </div>
             <br>
         </div>
             <script type="text/javascript" src="/ui/main3.js">
