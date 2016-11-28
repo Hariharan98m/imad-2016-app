@@ -117,7 +117,7 @@ sub.onclick=function(){
       //Not done yet
     };
     
-var c=document.getElementById('c').value;
+var c= (document.getElementsByTagName('title').value)[0];
 console.log(c);
 var username= document.getElementById('name').value;
 var password=document.getElementById('pw').value;
