@@ -12,13 +12,13 @@ sub.onclick=function(){
               if (reply==='Log in to comment'){
                   alert(reply);
               }
-              temp=document.getElementById('sc').value;
+              temp=document.getElementById('comments').value;
               temp.innerHTML=reply;
           }
       }  
       //Not done yet
     };
-var comment=document.getElementById('comments').value;
+var comment=document.getElementById('cts').value;
 console.log(comment);
 var com=document.getElementById('com').value;
 console.log(com);
