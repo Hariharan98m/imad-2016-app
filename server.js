@@ -228,9 +228,9 @@ app.get('/simple', function (req, res) {
         res.send('error');
     }
     else{
-        pool.query("select comments from articles where title='article-one",function(err,result){
+        pool.query("select comments from articles where title='article-one'",function(err,result){
     
-    res.send(result.rows);
+    res.send(result.rows[0].comments);
     });}
     
     });
