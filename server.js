@@ -93,7 +93,7 @@ function f(data){
             <br>
         <input type='submit' value="Submit" id='subbtn' style='font-family:calibri'/>
             <br><br>
-        <div>Comments:</div>
+        <div id='c'>Comments:</div>
             <div id='sc'>
             ${comments}
             </div>
