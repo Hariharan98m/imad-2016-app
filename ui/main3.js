@@ -1,29 +1,29 @@
-var sub=document.getElementById('subbtn');
-sub.onclick=function(){
-    //Make a request to the server and send the name
-    var request=new XMLHttpRequest();
-    //Capture the response and store it in a variable
-    request.onreadystatechange=function(){
-      if (request.readyState==XMLHttpRequest.DONE){
-          //Take some action
-          if(request.status==200){
-              //Capture the response and save it
-              var reply=request.responseText;
-              if (reply==='Log in to comment'){
-                  alert(reply);
-              }
-              temp=document.getElementById('comments').value;
-              temp.innerHTML=reply;
+// Eg: coco98.imad.hasura-app.io/articles/article-one will result in article-one
+// Submit username/password to login
+    var submit = document.getElementById('subbtn');
+    submit.onclick = function () {
+        // Create a request object
+        /*
+        var request = new XMLHttpRequest();
+        
+        // Capture the response and store it in a variable
+        request.onreadystatechange = function () {
+          if (request.readyState === XMLHttpRequest.DONE) {
+                // Take some action
+                if (request.status === 200) {
+                    // clear the form & reload all the comments
+                    document.getElementById('comment_text').value = '';
+                    loadComments();    
+                } else {
+                    alert('Error! Could not submit comment');
+                }
+                submit.value = 'Submit';
           }
-      }  
-      //Not done yet
+        };
+        */
+        // Make the request
+        var comment = document.getElementById('commentbox').value;
+        var form = document.getElementById('comment_form').value;
+        console.log(comment);
+        console.log(form);
     };
-var com=document.getElementById('com').value;
-var comment=document.getElementById('comments').value;
-console.log(comment);
-
-console.log(com);
-request.open('GET','http://hariharan98m.imad.hasura-app.io/call', true);
-request.send(null);
-};
-
