@@ -283,7 +283,7 @@ app.post('/comment',function(req,res){
     var title=req.body.title;
     console.log('I m here in the comments page'+comment+' '+title);
     if (req.session&&req.session.auth&&req.session.auth.userId){
-        pool.query("SELECT name from articles where id=$1",[req.session.auth.userId.toString()],function(err,result){
+        pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
                 var user=result.rows[0].name.toString();
         pool.query("UPDATE articles set comments=$1 where title=$2",[user+': '+comment+'\n', title],function(err,result){
         
