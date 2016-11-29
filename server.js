@@ -285,15 +285,6 @@ app.get('/logout',function(req,res){
     res.send(lout());
 });
 
-app.get('/his',function(req,res){
-    var title=req.query.title;
-   pool.query("select comments from articles where title=$1;",[title],function(err,result){
-                    his=result.rows[0].comments.toString().trim();
-                    res.send(his);
- 
-});
-});
-
 app.post('/comment',function(req,res){
     var comment=req.body.comment.toString();
     var title=req.body.title.toString();
@@ -306,9 +297,9 @@ app.post('/comment',function(req,res){
             var his='';
                 pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"';",function(err,result){
                     user=result.rows[0].name.toString().trim();
-                    console.log(user);
-                
-                                
+                    console.log('user:'+user);
+                pool.query("select comments from articles where title=$1;",[title],function(err,result){
+                    his=result.rows[0].comments.toString().trim();                
                 pool.query("update articles set comments=$1 where title=$2;",[''+his+''+user+': '+comment+'\n',title],function(err,result){
                     if(err){
                         res.send('error');
@@ -323,6 +314,7 @@ app.post('/comment',function(req,res){
     
                     
                     
+                });
                 });
                 });
                 
