@@ -284,6 +284,8 @@ app.get('/logout',function(req,res){
     delete req.session.auth;
     res.send(lout());
 });
+
+
 app.post('/comment',function(req,res){
     var comment=req.body.comment.toString();
     var title=req.body.title.toString();
@@ -295,13 +297,11 @@ app.post('/comment',function(req,res){
             var user='';
             var his='';
                 pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"';",function(err,result){
-                    user=result.rows[0].name.toString();
+                    user=result.rows[0].name.toString().trim();
                     console.log(user);
                 
                 pool.query("select comments from articles where title=$1;",[title],function(err,result){
-                    his=result.rows[0].comments.toString();
-                    console.log('history is-'+his);
-                    console.log('this is the history+new comment which I ll be appending to comments'+his+''+user+': '+comment+'\n');
+                    his=result.rows[0].comments.toString().trim();
                 });
                 });
                 
@@ -310,7 +310,10 @@ app.post('/comment',function(req,res){
                         res.send('error');
                     }
                     else{
-                    res.send(''+his+''+user+': '+comment+'\n');
+                        pool.query("select comments from articles where title=$1;",[title],function(err,result){
+                        
+                    res.send(result.rows[0].toString().trim());
+                    });
                     
                     }
                     });
