@@ -295,14 +295,14 @@ app.post('/comment',function(req,res){
             var user='';
             var his='';
                 pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
-                    user=result.rows[0].name;
+                    user=result.rows[0].name.toString();
                     console.log(user);
                 });
                 pool.query("select * from articles where title=$1",[title],function(err,result){
                     his=result.rows[0].comments;
-                    console.log(his);
+                    console.log('this is history:'+his);
                 });
-                console.log(''+his+user+': '+comment+'\n');
+                console.log('this is the history+new comment'+his+user+': '+comment+'\n');
                 pool.query("update articles set comments=$1 where title=$2",[''+his+user+': '+comment+'\n',title],function(err,result){
                     if(err){
                         res.send('error');
