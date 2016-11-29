@@ -299,16 +299,16 @@ app.post('/comment',function(req,res){
                     console.log(user);
                 });
                 pool.query("select * from articles where title=$1",[title],function(err,result){
-                    his=result.rows[0].comments;
-                    console.log('this is history:'+his);
+                    his=result.rows[0].comments.toString();
+                    console.log('this is history:'+his+'');
                 });
-                console.log('this is the history+new comment'+his+user+': '+comment+'\n');
-                pool.query("update articles set comments=$1 where title=$2",[''+his+user+': '+comment+'\n',title],function(err,result){
+                console.log('this is the history+new comment'+his+''+user+': '+comment+'\n');
+                pool.query("update articles set comments=$1 where title=$2",['\n'+his+''+user+': '+comment+'',title],function(err,result){
                     if(err){
                         res.send('error');
                     }
                     else{
-                    res.send(''+his+user+': '+comment+'');
+                    res.send('\n'+his+''+user+': '+comment+'');
                     
                     }
                     });
