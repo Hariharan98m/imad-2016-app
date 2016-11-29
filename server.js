@@ -223,10 +223,13 @@ function pass(name,age){
     return age;
 }
 app.get('/simple', function (req, res) {
-        pool.query("select comments from articles where title='article-one'",function(err,result){
+    var title='article-one';
+    var 
+    pool.query("select comments from articles where title='"+title+"'",function(err,result){
     
     res.send(result.rows[0].comments);
     });
+    
     });
 app.get('/articles', function (req, res) {
     
@@ -261,7 +264,8 @@ app.get('/articles', function (req, res) {
 function lout(){
     var htmltemp=`<html>
     <head>
-    <link href="/ui/style.css" rel="stylesheet" />
+    <link 
+    href="/ui/style.css" rel="stylesheet" />
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     </head>
     <body>
@@ -291,6 +295,9 @@ app.post('/comment',function(req,res){
                 pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
                     user=result.rows[0].name;
                     console.log(user);
+                });
+                pool.query("select comments from articles where title='article-one'",function(err,result){
+                    var his=resuult.rows[0].comments;
                 });
                 pool.query("update articles set comments+='its cool' where title='article-one'",function(err,result){
                     if(err){
