@@ -297,12 +297,16 @@ app.post('/comment',function(req,res){
                 pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
                     user=result.rows[0].name.toString();
                     console.log(user);
-                });
+                
                 pool.query("select comments from articles where title=$1",[title],function(err,result){
                     his=result.rows[0].comments.toString();
                     console.log('this is history:'+his+'');
-                });
+                    console.log('\n\n');
                 console.log('this is the history+new comment'+his+''+user+': '+comment+'\n');
+                    
+                });
+                });
+                
                 pool.query("update articles set comments=$1 where title=$2",['\n'+his+''+user+': '+comment+'',title],function(err,result){
                     if(err){
                         res.send('error');
