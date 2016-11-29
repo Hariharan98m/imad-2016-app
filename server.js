@@ -285,6 +285,12 @@ app.get('/logout',function(req,res){
     res.send(lout());
 });
 
+app.get('/date',function(req,res){
+   pool.query('SELECT CURRENT_TIMESTAMP;',function(err,result){
+       res.send(result.rows[0].now);
+   }) ;
+});
+
 app.post('/comment',function(req,res){
     var comment=req.body.comment.toString();
     var title=req.body.title.toString();
