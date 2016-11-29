@@ -312,7 +312,7 @@ app.post('/comment',function(req,res){
                     else{
                         pool.query("select comments from articles where title=$1;",[title],function(err,result){
                         
-                    res.send(result.rows[0].toString().trim());
+                    res.send(result.rows[0].comments.toString().trim());
                     });
                     
                     }
