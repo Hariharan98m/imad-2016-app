@@ -312,7 +312,7 @@ app.post('/comment',function(req,res){
                     var date=result.rows[0].now.toString();
                     
                 
-                pool.query("update articles set comments=$1 where title=$2;",['<p>'+his+''+user+'@ '+date+': '+comment+'</p>',title],function(err,result){
+                pool.query("update articles set comments=$1 where title=$2;",['<p>'+his+'<b>'+user+'</b>@ '+date+': '+comment+'</p>',title],function(err,result){
                     if(err){
                         res.send('error');
                     }
