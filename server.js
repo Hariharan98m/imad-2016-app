@@ -299,6 +299,7 @@ app.post('/comment',function(req,res){
                 });
                 pool.query("select * from articles where title=$1",[title],function(err,result){
                     his=result.rows[0].comments;
+                    console.log(his);
                 });
                 pool.query("update articles set comments=$1 where title=$2",[''+his+user+': '+comment+'\n',title],function(err,result){
                     if(err){
