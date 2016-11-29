@@ -298,7 +298,7 @@ app.post('/comment',function(req,res){
                     user=result.rows[0].name.toString();
                     console.log(user);
                 });
-                pool.query("select * from articles where title=$1",[title],function(err,result){
+                pool.query("select comments from articles where title=$1",[title],function(err,result){
                     his=result.rows[0].comments.toString();
                     console.log('this is history:'+his+'');
                 });
