@@ -292,7 +292,7 @@ app.get('/his',function(req,res){
                     res.send(his);
  
 });
-
+});
 
 app.post('/comment',function(req,res){
     var comment=req.body.comment.toString();
@@ -326,7 +326,6 @@ app.post('/comment',function(req,res){
                 });
                 });
                 
-                                    });
     }       
     else{
         res.send('Log in to comment');
