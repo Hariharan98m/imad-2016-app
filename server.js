@@ -285,7 +285,7 @@ app.get('/logout',function(req,res){
     res.send(lout());
 });
 
-app.get('/date',function(req,res){
+app.get('/date1',function(req,res){
    pool.query('SELECT CURRENT_TIMESTAMP;',function(err,result){
        res.send(result.rows[0].now);
    }) ;
