@@ -28,7 +28,7 @@ var crypto=require('crypto');
 app.get('/date1',function(req,res){
    pool.query('SELECT CURRENT_TIMESTAMP;',function(err,result){
        res.send(result.rows[0].now);
-   }) ;
+   });
 });
 
 app.post('/login', function (req, res) {
@@ -308,7 +308,11 @@ app.post('/comment',function(req,res){
                     console.log('user:'+user);
                 pool.query("select comments from articles where title=$1;",[title],function(err,result){
                     his=result.rows[0].comments.toString().trim();                
-                pool.query("update articles set comments=$1 where title=$2;",['<p>'+his+''+user+': '+comment+'</p>',title],function(err,result){
+                   pool.query('SELECT CURRENT_TIMESTAMP;',function(err,result){
+                    var date=result.rows[0].now.toString();
+                    
+                
+                pool.query("update articles set comments=$1 where title=$2;",['<p>'+his+''+user+'@ '+date+': '+comment+'</p>',title],function(err,result){
                     if(err){
                         res.send('error');
                     }
@@ -320,7 +324,7 @@ app.post('/comment',function(req,res){
                     
                     }
     
-                    
+                });
                     
                 });
                 });
