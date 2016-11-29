@@ -224,7 +224,6 @@ function pass(name,age){
 }
 app.get('/simple', function (req, res) {
     var title='article-one';
-    var 
     pool.query("select comments from articles where title='"+title+"'",function(err,result){
     
     res.send(result.rows[0].comments);
