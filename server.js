@@ -294,25 +294,23 @@ app.post('/comment',function(req,res){
             console.log('cookie set');
             var user='';
             var his='';
-                pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
+                pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"';",function(err,result){
                     user=result.rows[0].name.toString();
                     console.log(user);
                 
-                pool.query("select comments from articles where title=$1",[title],function(err,result){
+                pool.query("select comments from articles where title=$1;",[title],function(err,result){
                     his=result.rows[0].comments.toString();
-                    console.log('this is history:'+his+'');
-                    console.log('\n\n');
-                console.log('this is the history+new comment'+his+''+user+': '+comment+'\n');
-                    
+                    console.log('history is-'+his);
+                    console.log('this is the history+new comment which I ll be appending to comments'+his+''+user+': '+comment+'\n');
                 });
                 });
                 
-                pool.query("update articles set comments=$1 where title=$2",['\n'+his+''+user+': '+comment+'',title],function(err,result){
+                pool.query("update articles set comments=$1 where title=$2;",[''+his+''+user+': '+comment+'\n',title],function(err,result){
                     if(err){
                         res.send('error');
                     }
                     else{
-                    res.send('\n'+his+''+user+': '+comment+'');
+                    res.send(''+his+''+user+': '+comment+'\n');
                     
                     }
                     });
