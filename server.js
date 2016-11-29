@@ -300,7 +300,7 @@ app.post('/comment',function(req,res){
                     console.log('user:'+user);
                 pool.query("select comments from articles where title=$1;",[title],function(err,result){
                     his=result.rows[0].comments.toString().trim();                
-                pool.query("update articles set comments=$1 where title=$2;",[''+his+''+user+': '+comment+'\n',title],function(err,result){
+                pool.query("update articles set comments=$1 where title=$2;",['\n'+his+''+user+': '+comment+'',title],function(err,result){
                     if(err){
                         res.send('error');
                     }
