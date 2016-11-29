@@ -224,11 +224,12 @@ function pass(name,age){
 }
 app.get('/simple', function (req, res) {
     var title='article-one';
+    
     pool.query("select comments from articles where title='"+title+"'",function(err,result){
     
     res.send(result.rows[0].comments);
     });
-    
+    pool.query()
     });
 app.get('/articles', function (req, res) {
     
@@ -291,26 +292,24 @@ app.post('/comment',function(req,res){
     if (req.session&&req.session.auth&&req.session.auth.userId){
             console.log('cookie set');
             var user='';
+            var his='';
                 pool.query("Select name from users where id='"+req.session.auth.userId.toString()+"'",function(err,result){
                     user=result.rows[0].name;
                     console.log(user);
                 });
-                pool.query("select comments from articles where title='article-one'",function(err,result){
-                    var his=resuult.rows[0].comments;
+                pool.query("select comments from articles where title=$1",[title],function(err,result){
+                    his=result.rows[0].comments;
                 });
-                pool.query("update articles set comments+='its cool' where title='article-one'",function(err,result){
+                pool.query("update articles set comments=$1 where title=$2",[''+his+user+': '+comment+'\n',title],function(err,result){
                     if(err){
-                        res.send(error);
+                        res.send('error');
                     }
                     else{
-                    pool.query("select comments from articles where title='article-one'",function(err,result){
-                    console.log(result.rows[0].comments);
-                    res.send(result.rows[0].comments);
-                    });
-            
+                    res.send(''+his+user+': '+comment+'');
+                    
                     }
-                });
-    }
+                    });
+    }       
     else{
         res.send('Log in to comment');
     }
