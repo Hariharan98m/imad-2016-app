@@ -82,9 +82,9 @@ function f(data){
                   <a href="/articles">Back to Articles</a>
               </div>
               <hr/>
-              <h2>
+              <h1>
                   ${heading}
-              </h2>
+              </h1>
               <div>
                   ${date.toDateString()}
               </div>
