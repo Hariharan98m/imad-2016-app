@@ -302,6 +302,7 @@ app.post('/comment',function(req,res){
                     his=result.rows[0].comments;
                     console.log(his);
                 });
+                console.log(''+his+user+': '+comment+'\n');
                 pool.query("update articles set comments=$1 where title=$2",[''+his+user+': '+comment+'\n',title],function(err,result){
                     if(err){
                         res.send('error');
